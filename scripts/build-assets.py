@@ -1,24 +1,23 @@
 #!/usr/bin/env python3
-"""Crop and composite brand assets from pose sheets, sheet extracts, and photos.
+"""Crop stylized brand assets from setting-sheet / pose-sheet extracts.
 
-Does not invent new cat faces — only crops / places existing pixels.
+Does not copy real-life cat photos onto the site.
 """
 
 from __future__ import annotations
 
 from pathlib import Path
 
-from PIL import Image, ImageFilter, ImageOps
+from PIL import Image, ImageFilter
 
 ART = Path("/opt/cursor/artifacts/assets")
 OUT = Path("/workspace/public/assets")
 CROPS = OUT / "crops"
-PHOTOS = OUT / "photos"
 SOURCE = OUT / "source"
 
 
 def ensure_dirs() -> None:
-    for p in (CROPS, PHOTOS, SOURCE):
+    for p in (CROPS, SOURCE):
         p.mkdir(parents=True, exist_ok=True)
 
 
@@ -163,23 +162,6 @@ def crop_merch() -> None:
         save(square_on_cream(frac_box(im, *box), 900), CROPS / f"merch-{name}.jpg")
 
 
-def copy_photos() -> None:
-    mapping = {
-        "photo-shaoye-1.jpg": "shaoye-1.jpg",
-        "photo-shaoye-2.jpg": "shaoye-2.jpg",
-        "photo-shaoye-3.jpg": "shaoye-3.jpg",
-        "shaoye-4.jpg": "shaoye-4.jpg",
-        "keli-1.jpg": "keli-1.jpg",
-        "photo-keli-2.jpg": "keli-2.jpg",
-    }
-    for src, dest in mapping.items():
-        im = Image.open(ART / src)
-        # gentle downsample for the web, keep identity pixels
-        im = ImageOps.exif_transpose(im)
-        im.thumbnail((1400, 1400), Image.Resampling.LANCZOS)
-        save(im, PHOTOS / dest, quality=88)
-
-
 def composite_together() -> None:
     """Place the two hero crops close together for the easter-egg moment."""
     left = Image.open(CROPS / "hero-shaoye.jpg")
@@ -216,9 +198,6 @@ def main() -> None:
     crop_expressions()
     crop_stories()
     crop_merch()
-
-    print("photos")
-    copy_photos()
 
     print("together composite")
     composite_together()

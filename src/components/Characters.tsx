@@ -57,17 +57,11 @@ export function Characters({ onOpen, onTouch }: Props) {
               onOpen({ src: cat.portrait, alt: `${cat.name} 角色肖像`, caption: cat.tag })
             }}
           >
-            <img src={cat.portrait} alt={`${cat.name} 软 3D 角色肖像`} />
+            <img src={cat.portrait} alt={`${cat.name} 设定表裁切肖像`} />
           </button>
-          <a className="real-thumb" href="#gallery">
-            <img src={cat.photo} alt={`${cat.name} 的生活照片`} />
-            <div>
-              <b>真实的{cat.name}</b>
-              <div>去写真里看他/她本人</div>
-            </div>
-          </a>
           <p className="note">
-            角色视觉锁定：{cat.appearance.slice(0, 2).join('；')}。以下姿态来自同一只猫的多角度表。
+            角色视觉来自设定表／姿态表裁切，待用户二次创作素材替换。外形锁定：
+            {cat.appearance.slice(0, 2).join('；')}。
           </p>
         </div>
 

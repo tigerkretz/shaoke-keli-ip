@@ -13,7 +13,6 @@ export interface Character {
   likes: string[]
   dislikes: string[]
   portrait: string
-  photo: string
   poses: { src: string; label: string }[]
 }
 
@@ -36,7 +35,6 @@ export const characters: Record<CatId, Character> = {
     likes: ['高处与安静', '可丽靠过来（但不说）', '被轻轻摸摸头'],
     dislikes: ['太吵的环境', '被冷落', '可丽受惊'],
     portrait: '/assets/crops/hero-shaoye.jpg',
-    photo: '/assets/photos/shaoye-4.jpg',
     poses: [
       { src: '/assets/crops/shaoye-sit.jpg', label: '坐姿' },
       { src: '/assets/crops/shaoye-stand.jpg', label: '侧立' },
@@ -62,7 +60,6 @@ export const characters: Record<CatId, Character> = {
     likes: ['黏着少爷', '安静角落', '被护在身后'],
     dislikes: ['大声与陌生环境', '少爷不在', '突然的靠近'],
     portrait: '/assets/crops/hero-keli.jpg',
-    photo: '/assets/photos/keli-1.jpg',
     poses: [
       { src: '/assets/crops/keli-sit.jpg', label: '坐姿' },
       { src: '/assets/crops/keli-stand.jpg', label: '侧立' },
@@ -79,7 +76,7 @@ export const navItems = [
   { href: '#expressions', label: '表情', en: 'Faces' },
   { href: '#stories', label: '日常', en: 'Days' },
   { href: '#merch', label: '周边', en: 'Goods' },
-  { href: '#gallery', label: '写真', en: 'Photos' },
+  { href: '#coming', label: '素材', en: 'Soon' },
 ] as const
 
 export const relationships = [
@@ -205,38 +202,5 @@ export const merch = [
     name: '手机壳',
     en: 'Phone case',
     note: '亮屏也是他们。',
-  },
-] as const
-
-export const photos = [
-  {
-    src: '/assets/photos/shaoye-1.jpg',
-    who: '少爷',
-    caption: '背上那块棕灰，是他的签名。',
-  },
-  {
-    src: '/assets/photos/shaoye-2.jpg',
-    who: '少爷',
-    caption: '办公椅也要占领。高冷地看你一眼。',
-  },
-  {
-    src: '/assets/photos/shaoye-3.jpg',
-    who: '少爷',
-    caption: '爪子垂下来的时候，其实已经决定留下。',
-  },
-  {
-    src: '/assets/photos/shaoye-4.jpg',
-    who: '少爷',
-    caption: '坐得端正，心里在等可丽。',
-  },
-  {
-    src: '/assets/photos/keli-1.jpg',
-    who: '可丽',
-    caption: '绿眼睛一眨，世界就软下来。',
-  },
-  {
-    src: '/assets/photos/keli-2.jpg',
-    who: '可丽',
-    caption: '举起一只爪子：少爷在的话，我也可以勇敢。',
   },
 ] as const

@@ -1,15 +1,14 @@
 :root {
-  --cream: #f6f0e6;
-  --cream-deep: #ebe2d3;
-  --paper: #fffbf4;
-  --ink: #3a2e24;
-  --ink-soft: #6b5a4a;
-  --line: #d9cbb8;
-  --gold: #c4a36a;
-  --gold-deep: #9a7b45;
-  --shaoye: #7d6248;
-  --keli: #e0a85a;
-  --shadow: 0 18px 50px rgba(80, 58, 32, 0.1);
+  --bg: #f5efe6;
+  --bg-soft: #efe6d8;
+  --surface: #faf7f2;
+  --gold: #c9a06a;
+  --brown: #8b6b4a;
+  --text: #3d3229;
+  --muted: #9a8168;
+  --green: #7a8f5a;
+  --line: color-mix(in srgb, var(--gold) 38%, var(--bg-soft));
+  --shadow: 0 18px 50px color-mix(in srgb, var(--brown) 16%, transparent);
   --radius: 22px;
   --nav-h: 72px;
   --serif: 'Noto Serif SC', 'Cormorant Garamond', serif;
@@ -43,11 +42,11 @@ html {
 
 body {
   margin: 0;
-  color: var(--ink);
+  color: var(--text);
   background:
-    radial-gradient(1200px 600px at 10% -10%, #fff8ec 0%, transparent 50%),
-    radial-gradient(900px 500px at 110% 20%, #f3e4c8 0%, transparent 46%),
-    var(--cream);
+    radial-gradient(1200px 600px at 10% -10%, var(--surface) 0%, transparent 50%),
+    radial-gradient(900px 500px at 110% 20%, var(--bg-soft) 0%, transparent 46%),
+    var(--bg);
   font-family: var(--sans);
   line-height: 1.7;
 }
@@ -67,7 +66,7 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid var(--gold-deep);
+  outline: 2px solid var(--brown);
   outline-offset: 3px;
 }
 
@@ -76,8 +75,8 @@ a {
   left: 12px;
   top: -40px;
   z-index: 80;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--text);
+  color: var(--surface);
   padding: 8px 12px;
   border-radius: 8px;
 }
@@ -95,9 +94,9 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 0 28px;
-  background: rgba(246, 240, 230, 0.86);
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(196, 163, 106, 0.25);
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
 }
 
 .brand {
@@ -117,7 +116,7 @@ a {
 .brand-en {
   font-family: var(--en);
   font-style: italic;
-  color: var(--ink-soft);
+  color: var(--muted);
   font-size: 0.95rem;
 }
 
@@ -139,14 +138,14 @@ a {
 
 .nav-links a:hover,
 .nav-links a[aria-current='true'] {
-  background: #fff;
-  color: var(--gold-deep);
+  background: var(--surface);
+  color: var(--brown);
 }
 
 .nav-toggle {
   display: none;
   border: 1px solid var(--line);
-  background: var(--paper);
+  background: var(--surface);
   border-radius: 10px;
   padding: 8px 12px;
 }
@@ -169,7 +168,7 @@ a {
   width: 100%;
   border-radius: 36px;
   box-shadow: var(--shadow);
-  background: var(--paper);
+  background: var(--surface);
 }
 
 .hero-hotspots {
@@ -222,7 +221,7 @@ a {
   font-style: italic;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gold-deep);
+  color: var(--green);
   font-size: 0.86rem;
   margin: 0 0 18px;
 }
@@ -234,7 +233,7 @@ a {
 }
 
 .subline {
-  color: var(--ink-soft);
+  color: var(--muted);
   margin: 0 0 28px;
 }
 
@@ -255,8 +254,8 @@ a {
 }
 
 .btn-gold {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--text);
+  color: var(--surface);
 }
 
 .btn-ghost {
@@ -267,7 +266,7 @@ a {
 .hint {
   margin-top: 22px;
   font-size: 0.82rem;
-  color: var(--ink-soft);
+  color: var(--muted);
 }
 
 .section {
@@ -275,7 +274,7 @@ a {
 }
 
 .section-alt {
-  background: rgba(255, 251, 244, 0.62);
+  background: color-mix(in srgb, var(--surface) 72%, var(--bg-soft));
 }
 
 .section-head {
@@ -291,7 +290,7 @@ a {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   font-size: 0.78rem;
-  color: var(--gold-deep);
+  color: var(--green);
   margin: 0 0 8px;
 }
 
@@ -304,7 +303,7 @@ a {
 
 .lede {
   max-width: 36ch;
-  color: var(--ink-soft);
+  color: var(--muted);
   margin: 0;
 }
 
@@ -326,7 +325,7 @@ a {
 }
 
 .switcher button[aria-pressed='true'] {
-  background: #fff;
+  background: var(--surface);
   border-color: var(--gold);
   box-shadow: var(--shadow);
 }
@@ -338,7 +337,7 @@ a {
 }
 
 .switcher span {
-  color: var(--ink-soft);
+  color: var(--muted);
   font-size: 0.85rem;
 }
 
@@ -350,7 +349,7 @@ a {
 }
 
 .portrait-card {
-  background: var(--paper);
+  background: var(--surface);
   border-radius: 28px;
   padding: 18px;
   box-shadow: var(--shadow);
@@ -379,7 +378,7 @@ a {
   margin-top: 14px;
   padding: 10px;
   border-radius: 16px;
-  background: var(--cream);
+  background: var(--bg);
   text-decoration: none;
 }
 
@@ -392,7 +391,7 @@ a {
 
 .note {
   font-size: 0.8rem;
-  color: var(--ink-soft);
+  color: var(--muted);
   margin: 12px 4px 0;
 }
 
@@ -409,7 +408,7 @@ a {
 }
 
 .meta-card {
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 18px;
   padding: 16px 18px;
@@ -420,7 +419,7 @@ a {
   font-size: 0.78rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--gold-deep);
+  color: var(--brown);
 }
 
 .meta-card ul {
@@ -444,13 +443,13 @@ a {
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: 14px;
-  background: var(--paper);
+  background: var(--surface);
 }
 
 .pose-row figcaption {
   font-size: 0.75rem;
   text-align: center;
-  color: var(--ink-soft);
+  color: var(--muted);
   margin-top: 6px;
 }
 
@@ -469,8 +468,8 @@ a {
   overflow: hidden;
   cursor: pointer;
   text-align: left;
-  color: #fff;
-  background: #2c241c;
+  color: var(--surface);
+  background: var(--text);
 }
 
 .rel-card img {
@@ -489,7 +488,11 @@ a {
 .rel-shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(30, 22, 16, 0.1), rgba(30, 22, 16, 0.82));
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--text) 10%, transparent),
+    color-mix(in srgb, var(--text) 82%, transparent)
+  );
 }
 
 .rel-copy {
@@ -533,11 +536,11 @@ a {
 .tile {
   border: 0;
   padding: 0;
-  background: var(--paper);
+  background: var(--surface);
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(80, 58, 32, 0.06);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--brown) 10%, transparent);
 }
 
 .tile img {
@@ -573,7 +576,7 @@ a {
 
 .story-card {
   scroll-snap-align: start;
-  background: var(--paper);
+  background: var(--surface);
   border-radius: 24px;
   overflow: hidden;
   border: 0;
@@ -609,7 +612,7 @@ a {
   height: 40px;
   border-radius: 50%;
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--surface);
   cursor: pointer;
 }
 
@@ -627,16 +630,31 @@ a {
   grid-template-columns: repeat(3, 1fr);
 }
 
+.coming-card {
+  background: var(--surface);
+  border: 1px dashed var(--gold);
+  border-radius: 24px;
+  padding: 36px 32px;
+  max-width: 640px;
+}
+
+.coming-title {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  margin: 0 0 10px;
+  color: var(--brown);
+}
+
 .merch-card,
 .photo-card {
   border: 0;
   padding: 0;
-  background: var(--paper);
+  background: var(--surface);
   border-radius: 22px;
   overflow: hidden;
   cursor: zoom-in;
   text-align: left;
-  box-shadow: 0 10px 30px rgba(80, 58, 32, 0.07);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--brown) 12%, transparent);
 }
 
 .merch-card img,
@@ -673,7 +691,7 @@ a {
   position: fixed;
   inset: 0;
   z-index: 60;
-  background: rgba(28, 22, 16, 0.78);
+  background: color-mix(in srgb, var(--text) 78%, transparent);
   display: grid;
   place-items: center;
   padding: 32px;
@@ -692,7 +710,7 @@ a {
 }
 
 .lightbox figcaption {
-  color: #fff;
+  color: var(--surface);
   text-align: center;
   margin-top: 12px;
 }
@@ -702,7 +720,7 @@ a {
   top: 18px;
   right: 18px;
   border: 0;
-  background: #fff;
+  background: var(--surface);
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -713,7 +731,7 @@ a {
   position: fixed;
   inset: 0;
   z-index: 70;
-  background: rgba(246, 240, 230, 0.94);
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
   display: grid;
   place-items: center;
   padding: 32px;
@@ -762,7 +780,7 @@ a {
     top: var(--nav-h);
     right: 16px;
     flex-direction: column;
-    background: var(--paper);
+    background: var(--surface);
     padding: 12px;
     border-radius: 16px;
     box-shadow: var(--shadow);

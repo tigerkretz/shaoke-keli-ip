@@ -41,8 +41,8 @@ export function Hero({ onTouch, touched }: Props) {
           <a className="btn btn-gold" href="#characters">
             认识他们
           </a>
-          <a className="btn btn-ghost" href="#gallery">
-            真实的他们
+          <a className="btn btn-ghost" href="#coming">
+            后续素材
           </a>
         </div>
         <p className="hint">
