@@ -21,7 +21,7 @@ export default function App() {
   const touch = useCallback((who: 'shaoye' | 'keli') => {
     setTouched((prev) => {
       const next = { ...prev, [who]: true }
-      if (next.shaoye && next.keli) setEgg(true)
+      if (next.shaoye && next.keli && !(prev.shaoye && prev.keli)) setEgg(true)
       return next
     })
   }, [])
