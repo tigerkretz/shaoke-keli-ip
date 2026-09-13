@@ -16,7 +16,7 @@ export function Gallery({ onOpen }: { onOpen: (item: LightboxItem) => void }) {
           <button
             key={sheet.src}
             type="button"
-            className="sheet-card"
+            className="card sheet-card"
             onClick={() => onOpen({ src: sheet.src, alt: sheet.name, caption: `${sheet.name} / ${sheet.en}` })}
           >
             <img src={sheet.src} alt={sheet.name} />

@@ -15,7 +15,7 @@ export function Hero({ onTouch, touched }: Props) {
         <div className="hero-greet">
           <button
             type="button"
-            className={touched.shaoye ? 'chip chip-gold on' : 'chip chip-gold'}
+            className="chip"
             aria-pressed={touched.shaoye}
             onClick={() => onTouch('shaoye')}
           >
@@ -23,7 +23,7 @@ export function Hero({ onTouch, touched }: Props) {
           </button>
           <button
             type="button"
-            className={touched.keli ? 'chip chip-rose on' : 'chip chip-rose'}
+            className="chip"
             aria-pressed={touched.keli}
             onClick={() => onTouch('keli')}
           >

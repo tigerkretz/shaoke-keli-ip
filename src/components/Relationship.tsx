@@ -18,18 +18,15 @@ export function Relationship() {
           <button
             key={card.id}
             type="button"
-            className="rel-card"
+            className="card rel-card"
             aria-expanded={open === card.id}
             onClick={() => setOpen((cur) => (cur === card.id ? null : card.id))}
           >
             <img src={card.image} alt="" />
-            <span className="rel-shade" />
             <span className="rel-copy">
               <small>{card.kicker}</small>
               <h3>{card.title}</h3>
-              <p>
-                {open === card.id ? card.body : card.preview} {open === card.id ? '' : '→'}
-              </p>
+              <p>{open === card.id ? card.body : `${card.preview} →`}</p>
             </span>
           </button>
         ))}

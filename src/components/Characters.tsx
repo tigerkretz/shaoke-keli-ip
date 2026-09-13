@@ -29,10 +29,9 @@ export function Characters({ onOpen, onTouch }: Props) {
               key={key}
               type="button"
               role="tab"
-              data-cat={key}
-              className={`switch-${key}`}
               aria-selected={id === key}
               aria-pressed={id === key}
+              className="card"
               onClick={() => {
                 setId(key)
                 onTouch(key)
@@ -49,8 +48,8 @@ export function Characters({ onOpen, onTouch }: Props) {
         })}
       </div>
 
-      <div className={`profile theme-${id}`}>
-        <div className="portrait-card">
+      <div className="profile">
+        <div className="card portrait-card">
           <button
             type="button"
             className="portrait-btn"
@@ -76,7 +75,7 @@ export function Characters({ onOpen, onTouch }: Props) {
           </p>
           <p className="quote">「{cat.quote}」</p>
           <div className="meta-grid">
-            <article className="meta-card">
+            <article className="card meta-card">
               <h3>外形 Appearance</h3>
               <ul>
                 {cat.appearance.map((line) => (
@@ -84,7 +83,7 @@ export function Characters({ onOpen, onTouch }: Props) {
                 ))}
               </ul>
             </article>
-            <article className="meta-card">
+            <article className="card meta-card">
               <h3>性格 Personality</h3>
               <ul>
                 {cat.personality.map((line) => (
@@ -92,7 +91,7 @@ export function Characters({ onOpen, onTouch }: Props) {
                 ))}
               </ul>
             </article>
-            <article className="meta-card">
+            <article className="card meta-card">
               <h3>喜欢 Likes</h3>
               <ul>
                 {cat.likes.map((line) => (
@@ -100,7 +99,7 @@ export function Characters({ onOpen, onTouch }: Props) {
                 ))}
               </ul>
             </article>
-            <article className="meta-card">
+            <article className="card meta-card">
               <h3>讨厌 Dislikes</h3>
               <ul>
                 {cat.dislikes.map((line) => (
@@ -114,7 +113,7 @@ export function Characters({ onOpen, onTouch }: Props) {
               <figure key={pose.src}>
                 <button
                   type="button"
-                  className="portrait-btn"
+                  className="card portrait-btn"
                   onClick={() => onOpen({ src: pose.src, alt: `${cat.name} ${pose.label}`, caption: pose.label })}
                 >
                   <img src={pose.src} alt={`${cat.name} ${pose.label}`} />

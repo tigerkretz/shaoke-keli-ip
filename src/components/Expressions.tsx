@@ -16,7 +16,7 @@ export function Expressions({ onOpen }: { onOpen: (item: LightboxItem) => void }
           <button
             key={item.src}
             type="button"
-            className="tile"
+            className="card tile"
             onClick={() =>
               onOpen({
                 src: item.src,

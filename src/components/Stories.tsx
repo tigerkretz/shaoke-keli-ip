@@ -32,7 +32,7 @@ export function Stories({ onOpen }: { onOpen: (item: LightboxItem) => void }) {
             <button
               key={story.src}
               type="button"
-              className="story-card"
+              className="card story-card"
               onClick={() =>
                 onOpen({
                   src: story.src,
