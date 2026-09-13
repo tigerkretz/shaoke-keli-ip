@@ -26,7 +26,7 @@ https://tigerkretz.github.io/shaoke-keli-ip/
 
 当前无需本地 `npm` 即可打开的静态预览（`docs/` 即 Vite `dist`）：
 
-https://cdn.jsdelivr.net/gh/tigerkretz/shaoke-keli-ip@cursor/duo-cat-ip-microsite-9baf/docs/index.html
+https://raw.githack.com/tigerkretz/shaoke-keli-ip/cursor/duo-cat-ip-microsite-9baf/docs/index.html
 
 ## 本地演示
 
