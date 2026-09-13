@@ -14,8 +14,9 @@
 
 ## 品牌标
 
-- `public/assets/logo.png` — 导航与页脚
-- `public/favicon.ico` / `public/assets/favicon-32.png` / `favicon-192.png` / `apple-touch-icon.png` — 从 logo 脸部方裁生成
+- `public/assets/logo.png` — 圆形徽章，导航与页脚主标
+- `public/assets/logo-ribbon.png` — 丝带名牌变体（备份）
+- `public/favicon.ico` / `favicon-32.png` / `favicon-192.png` / `apple-touch-icon.png` — 从主标居中方裁生成
 
 ## 本地演示
 

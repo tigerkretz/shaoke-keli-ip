@@ -11,7 +11,7 @@ Primary site visuals are these exact files only:
 
 Tiles in `public/assets/crops/` are crops of those files. Do not invent new cat faces. Do not use real-life photos.
 
-Brand mark: `public/assets/logo.png`. Favicons are a face-centered square crop of that file.
+Brand mark: `public/assets/logo.png` (circular badge). Ribbon variant: `logo-ribbon.png`. Favicons are a centered square crop of `logo.png`.
 
 ## Identity lock
 
