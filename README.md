@@ -12,13 +12,10 @@
 
 `public/assets/crops/` 全部从以上成稿裁切。不含生活照片，不另造脸。
 
-## 待投放槽位
+## 品牌标
 
-用户会继续给这些文件，到了直接替换即可：
-
-- `public/assets/logo.png` — 导航 / 页脚品牌标
-- `public/assets/favicon-192.png` — 浏览器图标（也可从 logo 居中方裁）
-- `public/assets/apple-touch-icon.png` — 主屏图标
+- `public/assets/logo.png` — 导航与页脚
+- `public/favicon.ico` / `public/assets/favicon-32.png` / `favicon-192.png` / `apple-touch-icon.png` — 从 logo 脸部方裁生成
 
 ## 本地演示
 

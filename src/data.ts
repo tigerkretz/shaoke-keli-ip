@@ -231,13 +231,6 @@ export const merch = [
   },
 ] as const
 
-/** Drop-in slots the user will supply next. Do not invent replacements. */
-export const pendingAssets = {
-  logo: '/assets/logo.png',
-  favicon192: '/assets/favicon-192.png',
-  appleTouch: '/assets/apple-touch-icon.png',
-} as const
-
 export const officialSheets = [
   { src: '/assets/duo-hero.png', name: '双人主视觉', en: 'Duo poster' },
   { src: '/assets/shaoye-sheet.png', name: '少爷设定表', en: 'Shào Yé sheet' },

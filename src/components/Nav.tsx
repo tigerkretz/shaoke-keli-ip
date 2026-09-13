@@ -27,6 +27,7 @@ export function Nav() {
   return (
     <header className="nav">
       <a className="brand" href="#top">
+        <img className="brand-logo" src="/assets/logo.png" alt="" />
         <span className="brand-zh">少爷 × 可丽</span>
         <span className="brand-en">Always together</span>
       </a>

@@ -11,7 +11,7 @@ Primary site visuals are these exact files only:
 
 Tiles in `public/assets/crops/` are crops of those files. Do not invent new cat faces. Do not use real-life photos.
 
-Pending drop-ins (do not invent): `logo.png`, `favicon-192.png`, `apple-touch-icon.png`.
+Brand mark: `public/assets/logo.png`. Favicons are a face-centered square crop of that file.
 
 ## Identity lock
 
