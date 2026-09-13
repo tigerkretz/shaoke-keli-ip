@@ -12,6 +12,13 @@
 
 `public/assets/crops/` 全部从以上成稿裁切。不含生活照片，不另造脸。
 
+社交导出（同样只裁官方成稿，`python3 scripts/make-social.py`）：
+
+- `public/assets/social/cutout-shaoye-3x4.png` / `cutout-keli-3x4.png` — 网站角色肖像
+- `public/assets/social/ig-portrait-shaoye.png` / `ig-portrait-keli.png` — 1080×1350
+- `public/assets/social/ig-square-duo.png` — 1080×1080
+- `public/assets/social/ig-story-duo.png` — 1080×1920
+
 ## 品牌标
 
 - `public/assets/logo.png` — 圆形徽章，导航与页脚主标
