@@ -12,16 +12,16 @@ export function Characters({ onOpen, onTouch }: Props) {
   const cat = characters[id]
 
   return (
-    <section className="section section-alt" id="characters">
+    <section className="section" id="characters">
       <div className="section-head">
         <div>
-          <p className="en-label">Character</p>
-          <h2>角色设定</h2>
+          <p className="en-label">The pair</p>
+          <h2>先认识这两只</h2>
         </div>
-        <p className="lede">点选少爷或可丽切换档案。画像全部裁自官方设定表，不另造脸。</p>
+        <p className="lede">点肖像切换。完整设定表收在后面，不挡路。</p>
       </div>
 
-      <div className="switcher" role="tablist" aria-label="角色切换">
+      <div className="cast-switch" role="tablist" aria-label="角色切换">
         {(['shaoye', 'keli'] as const).map((key) => {
           const item = characters[key]
           return (
@@ -32,89 +32,52 @@ export function Characters({ onOpen, onTouch }: Props) {
               aria-selected={id === key}
               aria-pressed={id === key}
               data-cat={key}
-              className="card"
+              className="cast-tab"
               onClick={() => {
                 setId(key)
                 onTouch(key)
               }}
             >
-              <b>
-                {item.name} {key === 'shaoye' ? '♔' : '❀'}
-              </b>
+              <img src={item.portrait} alt="" />
               <span>
-                {item.nameEn} · {item.tag}
+                <b>
+                  {item.name} {key === 'shaoye' ? '♔' : '❀'}
+                </b>
+                {item.tag}
               </span>
             </button>
           )
         })}
       </div>
 
-      <div className="profile">
-        <div className="card portrait-card">
-          <button
-            type="button"
-            className="portrait-btn"
-            onClick={() => {
-              onTouch(id)
-              onOpen({ src: cat.portrait, alt: `${cat.name} 角色肖像`, caption: cat.tag })
-            }}
-          >
-            <img src={cat.portrait} alt={`${cat.name} 设定表主视觉`} />
-          </button>
-          <button
-            type="button"
-            className="sheet-link"
-            onClick={() => onOpen({ src: cat.sheet, alt: `${cat.name} 完整设定表`, caption: '官方角色设定表' })}
-          >
-            查看完整设定表
-          </button>
-        </div>
+      <div key={id} className="profile fade-swap">
+        <button
+          type="button"
+          className="portrait-btn"
+          onClick={() => {
+            onTouch(id)
+            onOpen({ src: cat.portrait, alt: `${cat.name} 角色肖像`, caption: cat.tag })
+          }}
+        >
+          <img src={cat.portrait} alt={`${cat.name} 肖像`} />
+        </button>
 
-        <div>
+        <div className="profile-copy">
           <p className="en-label">
             {cat.nameEn} · {cat.tagEn}
           </p>
           <p className="quote">「{cat.quote}」</p>
-          <div className="meta-grid">
-            <article className="card meta-card">
-              <h3>外形 Appearance</h3>
-              <ul>
-                {cat.appearance.map((line) => (
-                  <li key={line}>{line}</li>
-                ))}
-              </ul>
-            </article>
-            <article className="card meta-card">
-              <h3>性格 Personality</h3>
-              <ul>
-                {cat.personality.map((line) => (
-                  <li key={line}>{line}</li>
-                ))}
-              </ul>
-            </article>
-            <article className="card meta-card">
-              <h3>喜欢 Likes</h3>
-              <ul>
-                {cat.likes.map((line) => (
-                  <li key={line}>{line}</li>
-                ))}
-              </ul>
-            </article>
-            <article className="card meta-card">
-              <h3>讨厌 Dislikes</h3>
-              <ul>
-                {cat.dislikes.map((line) => (
-                  <li key={line}>{line}</li>
-                ))}
-              </ul>
-            </article>
+          <div className="pills">
+            {cat.personality.slice(0, 3).map((line) => (
+              <span key={line}>{line}</span>
+            ))}
           </div>
           <div className="pose-row">
             {cat.poses.map((pose) => (
               <figure key={pose.src}>
                 <button
                   type="button"
-                  className="card portrait-btn"
+                  className="pose-btn"
                   onClick={() => onOpen({ src: pose.src, alt: `${cat.name} ${pose.label}`, caption: pose.label })}
                 >
                   <img src={pose.src} alt={`${cat.name} ${pose.label}`} />
@@ -123,6 +86,13 @@ export function Characters({ onOpen, onTouch }: Props) {
               </figure>
             ))}
           </div>
+          <button
+            type="button"
+            className="btn btn-ghost sheet-link"
+            onClick={() => onOpen({ src: cat.sheet, alt: `${cat.name} 完整设定表`, caption: '官方角色设定表' })}
+          >
+            查看完整设定表
+          </button>
         </div>
       </div>
     </section>

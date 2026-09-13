@@ -39,11 +39,8 @@ export const characters: Record<CatId, Character> = {
     sheet: '/shaoke-keli-ip/assets/shaoye-sheet.png',
     poses: [
       { src: '/shaoke-keli-ip/assets/crops/pose-shaoye-stand.jpg', label: '优雅站立' },
-      { src: '/shaoke-keli-ip/assets/crops/pose-shaoye-walk.jpg', label: '缓缓走来' },
       { src: '/shaoke-keli-ip/assets/crops/pose-shaoye-loaf.jpg', label: '趴下发呆' },
       { src: '/shaoke-keli-ip/assets/crops/pose-shaoye-sleep.jpg', label: '卷着尾巴睡觉' },
-      { src: '/shaoke-keli-ip/assets/crops/shaoye-side.jpg', label: '侧面' },
-      { src: '/shaoke-keli-ip/assets/crops/shaoye-back.jpg', label: '背面' },
     ],
   },
   keli: {
@@ -67,11 +64,8 @@ export const characters: Record<CatId, Character> = {
     sheet: '/shaoke-keli-ip/assets/keli-sheet.png',
     poses: [
       { src: '/shaoke-keli-ip/assets/crops/pose-keli-loaf.jpg', label: '跟着少爷' },
-      { src: '/shaoke-keli-ip/assets/crops/pose-keli-belly.jpg', label: '躲在少爷身后' },
       { src: '/shaoke-keli-ip/assets/crops/pose-keli-sit.jpg', label: '求黏贴' },
-      { src: '/shaoke-keli-ip/assets/crops/pose-keli-play.jpg', label: '抱着玩偶' },
       { src: '/shaoke-keli-ip/assets/crops/pose-keli-sleep.jpg', label: '和少爷一起睡' },
-      { src: '/shaoke-keli-ip/assets/crops/keli-side.jpg', label: '侧面' },
     ],
   },
 }
@@ -83,7 +77,6 @@ export const navItems = [
   { href: '#expressions', label: '表情', en: 'Faces' },
   { href: '#stories', label: '日常', en: 'Days' },
   { href: '#merch', label: '周边', en: 'Goods' },
-  { href: '#sheets', label: '设定表', en: 'Sheets' },
 ] as const
 
 export const relationships = [
@@ -232,7 +225,22 @@ export const merch = [
 ] as const
 
 export const officialSheets = [
-  { src: '/shaoke-keli-ip/assets/duo-hero.png', name: '双人主视觉', en: 'Duo poster' },
-  { src: '/shaoke-keli-ip/assets/shaoye-sheet.png', name: '少爷设定表', en: 'Shào Yé sheet' },
-  { src: '/shaoke-keli-ip/assets/keli-sheet.png', name: '可丽设定表', en: 'Kě Lì sheet' },
+  {
+    src: '/shaoke-keli-ip/assets/duo-hero.png',
+    thumb: '/shaoke-keli-ip/assets/crops/duo-pair.jpg',
+    name: '双人主视觉',
+    en: 'Duo poster',
+  },
+  {
+    src: '/shaoke-keli-ip/assets/shaoye-sheet.png',
+    thumb: '/shaoke-keli-ip/assets/crops/shaoye-portrait.jpg',
+    name: '少爷设定表',
+    en: 'Shào Yé sheet',
+  },
+  {
+    src: '/shaoke-keli-ip/assets/keli-sheet.png',
+    thumb: '/shaoke-keli-ip/assets/crops/keli-portrait.jpg',
+    name: '可丽设定表',
+    en: 'Kě Lì sheet',
+  },
 ] as const
