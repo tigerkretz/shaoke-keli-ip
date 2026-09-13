@@ -18,6 +18,16 @@
 - `public/assets/logo-ribbon.png` — 丝带名牌变体（备份）
 - `public/favicon.ico` / `favicon-32.png` / `favicon-192.png` / `apple-touch-icon.png` — 从主标居中方裁生成
 
+## 在线预览
+
+GitHub Pages 工作流已就绪；仓库 Settings → Pages 需选 **GitHub Actions** 后，正式地址为：
+
+https://tigerkretz.github.io/shaoke-keli-ip/
+
+当前无需本地 `npm` 即可打开的静态预览（`docs/` 即 Vite `dist`）：
+
+https://cdn.jsdelivr.net/gh/tigerkretz/shaoke-keli-ip@cursor/duo-cat-ip-microsite-9baf/docs/index.html
+
 ## 本地演示
 
 ```bash
