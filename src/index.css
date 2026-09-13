@@ -383,7 +383,7 @@ button {
   width: 84px;
   height: 112px;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center top;
   border-radius: 16px;
 }
 
@@ -445,7 +445,7 @@ button {
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center top;
   transition: transform 700ms ease;
 }
 
@@ -645,10 +645,20 @@ button {
   transform: none;
 }
 
-.story-grid {
+.story-grid,
+.story-track {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
+  overflow: hidden;
+  scrollbar-width: none;
+}
+
+.story-grid::-webkit-scrollbar,
+.story-track::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .story-card {
@@ -704,20 +714,18 @@ button {
 }
 
 .merch-media {
-  display: block;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  background: var(--cream-deep);
   overflow: hidden;
 }
 
 .merch-media img {
   width: 100%;
-  aspect-ratio: 5 / 4;
-  object-fit: cover;
-  object-position: 50% 55%;
-  transition: transform 600ms ease;
-}
-
-.merch-card:hover .merch-media img {
-  transform: scale(1.05);
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .merch-copy {
@@ -778,7 +786,7 @@ button {
   width: 44px;
   height: 44px;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center top;
   border-radius: 50%;
 }
 
@@ -815,7 +823,7 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center top;
 }
 
 .closer-line {

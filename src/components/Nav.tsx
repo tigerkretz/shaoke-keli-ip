@@ -8,21 +8,25 @@ export function Nav() {
 
   useEffect(() => {
     const ids = navItems.map((item) => item.href.slice(1))
-    const els = ids
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => Boolean(el))
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
-        if (visible?.target.id) setActive(`#${visible.target.id}`)
-      },
-      { rootMargin: '-30% 0px -55% 0px', threshold: [0.1, 0.4] },
-    )
-    els.forEach((el) => io.observe(el))
-    return () => io.disconnect()
+    const onScroll = () => {
+      const line = window.innerHeight * 0.28
+      let current = ids[0]
+      for (const id of ids) {
+        const el = document.getElementById(id)
+        if (!el) continue
+        if (el.getBoundingClientRect().top <= line) current = id
+      }
+      setActive(`#${current}`)
+    }
+
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
   }, [])
 
   return (

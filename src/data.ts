@@ -129,49 +129,49 @@ export const expressions = [
 
 export const stories = [
   {
-    src: '/shaoke-keli-ip/assets/crops/story-aloof.jpg',
+    src: '/shaoke-keli-ip/assets/crops/story-aloof.png',
     title: '少爷：高冷脸',
     en: 'Cool face',
     line: '先装作不在意。尾巴已经出卖了。',
   },
   {
-    src: '/shaoke-keli-ip/assets/crops/story-shy.jpg',
+    src: '/shaoke-keli-ip/assets/crops/story-shy.png',
     title: '可丽：有点害怕',
     en: 'A little scared',
     line: '世界很大。少爷在的时候，就刚好。',
   },
   {
-    src: '/shaoke-keli-ip/assets/crops/story-loaf.jpg',
+    src: '/shaoke-keli-ip/assets/crops/story-loaf.png',
     title: '一起发呆',
     en: 'Loaf together',
     line: '什么也不做，也要并排。',
   },
   {
-    src: '/shaoke-keli-ip/assets/crops/story-glance.jpg',
+    src: '/shaoke-keli-ip/assets/crops/story-glance.png',
     title: '少爷：偷偷宠着你',
     en: 'Secretly watching',
     line: '回一下头就好。被抓到的话，就说是风。',
   },
   {
-    src: '/shaoke-keli-ip/assets/crops/story-happy.jpg',
+    src: '/shaoke-keli-ip/assets/crops/story-happy.png',
     title: '可丽：超满足',
     en: 'Full heart',
     line: '贴在一起的时候，胆子会变大。',
   },
   {
-    src: '/shaoke-keli-ip/assets/crops/story-sleep.jpg',
+    src: '/shaoke-keli-ip/assets/crops/story-sleep.png',
     title: '一起睡觉',
     en: 'Sleep together',
     line: '靠近一点，噩梦就会比较短。',
   },
   {
-    src: '/shaoke-keli-ip/assets/crops/story-hide.jpg',
+    src: '/shaoke-keli-ip/assets/crops/story-hide.png',
     title: '躲在少爷身后',
     en: 'Behind him',
     line: '纸箱只是借口。真正的避风港是旁边那团毛。',
   },
   {
-    src: '/shaoke-keli-ip/assets/crops/story-bed.jpg',
+    src: '/shaoke-keli-ip/assets/crops/story-bed.png',
     title: '一起晒太阳',
     en: 'Sunbed',
     line: '同一只窝，两种睡相。',

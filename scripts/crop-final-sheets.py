@@ -15,7 +15,7 @@ ROOT = Path("/workspace/public/assets")
 OUT = ROOT / "crops"
 CREAM = (245, 238, 230)
 MIN_LONG = 1400
-MIN_SQUARE = 800
+MIN_SQUARE = 1200
 
 
 def box(im: Image.Image, l: float, t: float, r: float, b: float) -> Image.Image:
@@ -48,6 +48,25 @@ def save_jpg(im: Image.Image, name: str) -> None:
     print(f"  {name:28} {rgb.size[0]}x{rgb.size[1]} jpg95")
 
 
+def portrait_34(im: Image.Image, fill: tuple[int, int, int] = CREAM) -> Image.Image:
+    """Bake a 3:4 frame: full cat visible, face toward the top, cream sides."""
+    subject = upscale_min_long(im, MIN_LONG)
+    sw, sh = subject.size
+    height = 1400
+    width = int(height * 3 / 4)
+    canvas = Image.new("RGB", (width, height), fill)
+    pad_x, pad_y = int(width * 0.07), int(height * 0.05)
+    scale = min((width - pad_x * 2) / sw, (height - pad_y * 2) / sh)
+    nw, nh = max(1, round(sw * scale)), max(1, round(sh * scale))
+    subject = subject.resize((nw, nh), Image.Resampling.LANCZOS)
+    x = (width - nw) // 2
+    y = pad_y
+    if y + nh > height - pad_y:
+        y = height - nh - pad_y
+    canvas.paste(subject, (x, y))
+    return canvas
+
+
 def square_pad(im: Image.Image, fill: tuple[int, int, int] = CREAM, face_bias: float = 0.12) -> Image.Image:
     """Center the subject on cream. Extra headroom so ears stay inside a square tile."""
     w, h = im.size
@@ -78,7 +97,11 @@ def crop_row(
         l = x0 + span * (i / count)
         r = x0 + span * ((i + 1) / count)
         cell = box(im, l + inset, y0, r - inset, y1)
-        save_jpg(square_pad(cell, face_bias=face_bias), name)
+        tile = square_pad(cell, face_bias=face_bias)
+        if name.endswith(".png"):
+            save_png(tile, name)
+        else:
+            save_jpg(tile, name)
 
 
 def main() -> None:
@@ -87,9 +110,9 @@ def main() -> None:
     keli = Image.open(ROOT / "keli-sheet.png")
     duo = Image.open(ROOT / "duo-hero.png")
 
-    # Tight sitting-cat windows — exclude left copy and empty cream.
-    save_png(upscale_min_long(box(shaoye, 0.392, 0.060, 0.662, 0.490)), "shaoye-portrait.png")
-    save_png(upscale_min_long(box(keli, 0.400, 0.058, 0.638, 0.490)), "keli-portrait.png")
+    # Tight sitting-cat windows, then bake true 3:4 PNGs so CSS cover cannot clip faces.
+    save_png(portrait_34(box(shaoye, 0.392, 0.060, 0.662, 0.490)), "shaoye-portrait.png")
+    save_png(portrait_34(box(keli, 0.400, 0.058, 0.638, 0.490)), "keli-portrait.png")
     save_png(upscale_min_long(box(duo, 0.248, 0.088, 0.718, 0.428)), "duo-pair.png")
 
     save_jpg(square_pad(box(shaoye, 0.80, 0.085, 0.985, 0.275), face_bias=0.08), "shaoye-side.jpg")
@@ -164,15 +187,15 @@ def main() -> None:
         0.778,
         5,
         [
-            "story-aloof.jpg",
-            "story-shy.jpg",
-            "story-loaf.jpg",
-            "story-glance.jpg",
-            "story-happy.jpg",
+            "story-aloof.png",
+            "story-shy.png",
+            "story-loaf.png",
+            "story-glance.png",
+            "story-happy.png",
         ],
-        x0=0.02,
-        x1=0.98,
-        inset=0.008,
+        x0=0.015,
+        x1=0.985,
+        inset=0.004,
         face_bias=0.10,
     )
     crop_row(
@@ -181,14 +204,14 @@ def main() -> None:
         0.955,
         4,
         [
-            "story-sleep.jpg",
-            "story-hide.jpg",
-            "story-bed.jpg",
-            "story-world.jpg",
+            "story-sleep.png",
+            "story-hide.png",
+            "story-bed.png",
+            "story-world.png",
         ],
-        x0=0.02,
-        x1=0.78,
-        inset=0.008,
+        x0=0.015,
+        x1=0.785,
+        inset=0.004,
         face_bias=0.08,
     )
     print("done")

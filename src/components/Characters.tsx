@@ -53,7 +53,7 @@ export function Characters({ onOpen, onTouch }: Props) {
       <div key={id} className="profile fade-swap">
         <button
           type="button"
-          className="portrait-btn"
+          className="portrait-btn portrait-card"
           onClick={() => {
             onTouch(id)
             onOpen({ src: cat.portrait, alt: `${cat.name} 角色肖像`, caption: cat.tag })
