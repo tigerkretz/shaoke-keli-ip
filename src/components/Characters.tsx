@@ -31,6 +31,7 @@ export function Characters({ onOpen, onTouch }: Props) {
               role="tab"
               aria-selected={id === key}
               aria-pressed={id === key}
+              data-cat={key}
               className="card"
               onClick={() => {
                 setId(key)

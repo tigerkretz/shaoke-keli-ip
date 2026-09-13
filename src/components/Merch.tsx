@@ -1,4 +1,4 @@
-import { merch } from '../data'
+import { merch, merchBoard } from '../data'
 import type { LightboxItem } from './Lightbox'
 
 export function Merch({ onOpen }: { onOpen: (item: LightboxItem) => void }) {
@@ -9,8 +9,27 @@ export function Merch({ onOpen }: { onOpen: (item: LightboxItem) => void }) {
           <p className="en-label">IP applications</p>
           <h2>周边应用</h2>
         </div>
-        <p className="lede">周边稿全部来自设定表裁切。悬停看边线，点开放大。</p>
+        <p className="lede">官方周边板：抱枕、立牌、杯、袋与小物。点开单品看裁切。</p>
       </div>
+      <button
+        type="button"
+        className="card merch-board"
+        onClick={() =>
+          onOpen({
+            src: merchBoard.src,
+            alt: merchBoard.name,
+            caption: `${merchBoard.name} / ${merchBoard.en} — ${merchBoard.note}`,
+          })
+        }
+      >
+        <img src={merchBoard.src} alt={merchBoard.name} />
+        <div>
+          <b>{merchBoard.name}</b>
+          <div>
+            {merchBoard.en} — {merchBoard.note}
+          </div>
+        </div>
+      </button>
       <div className="merch-grid">
         {merch.map((item) => (
           <button

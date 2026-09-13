@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { BrandStrip } from './components/BrandStrip'
 import { Characters } from './components/Characters'
 import { EasterEgg } from './components/EasterEgg'
 import { Expressions } from './components/Expressions'
@@ -51,6 +52,7 @@ export default function App() {
         <Stories onOpen={open} />
         <Merch onOpen={open} />
         <Gallery onOpen={open} />
+        <BrandStrip />
       </main>
       <Footer />
       {lightbox ? <Lightbox item={lightbox} onClose={() => setLightbox(null)} /> : null}

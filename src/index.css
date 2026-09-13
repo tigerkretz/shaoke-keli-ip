@@ -4,6 +4,7 @@
   --cream-deep: #efe4d8;
   --surface: #fbf6f0;
   --gold: #c3a087;
+  --rose: #d4a194;
   --brown: #8f6d52;
   --ink: #463830;
   --muted: #9a7f6a;
@@ -149,9 +150,18 @@ button.card {
 
 .brand {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 10px;
   text-decoration: none;
+}
+
+.brand-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  background: var(--surface);
 }
 
 .brand-zh {
@@ -241,14 +251,22 @@ button.card {
 }
 
 .chip:hover {
-  border-color: var(--gold);
   background: var(--cream-deep);
+}
+
+.chip-gold:hover,
+.chip-gold[aria-pressed='true'] {
+  border-color: var(--gold);
+}
+
+.chip-rose:hover,
+.chip-rose[aria-pressed='true'] {
+  border-color: var(--rose);
 }
 
 .chip[aria-pressed='true'] {
   background: var(--ink);
   color: var(--surface);
-  border-color: var(--ink);
 }
 
 .hero-copy h1 {
@@ -388,6 +406,14 @@ button.card {
   border-color: var(--ink);
 }
 
+.switcher button[data-cat='shaoye'][aria-pressed='true'] {
+  border-color: var(--gold);
+}
+
+.switcher button[data-cat='keli'][aria-pressed='true'] {
+  border-color: var(--rose);
+}
+
 .switcher button[aria-pressed='true'] span {
   color: color-mix(in srgb, var(--surface) 72%, var(--gold));
 }
@@ -502,7 +528,7 @@ button.card {
 
 .rel-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-3);
 }
 
@@ -515,7 +541,7 @@ button.card {
 
 .rel-card img {
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
 }
 
@@ -554,7 +580,22 @@ button.card {
 }
 
 .merch-grid {
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.merch-board {
+  width: 100%;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  color: var(--ink);
+  margin-bottom: var(--space-4);
+}
+
+.merch-board img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
 }
 
 .sheet-grid {
@@ -571,10 +612,15 @@ button.card {
   color: var(--ink);
 }
 
-.tile img,
-.merch-card img {
+.tile img {
   width: 100%;
   aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.merch-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
 }
 
@@ -587,6 +633,7 @@ button.card {
 
 .tile .cap,
 .merch-card div,
+.merch-board div,
 .sheet-card div,
 .story-card div {
   padding: 12px 14px 16px;
@@ -596,6 +643,7 @@ button.card {
 
 .tile b,
 .merch-card b,
+.merch-board b,
 .sheet-card b,
 .story-card h3 {
   display: block;
@@ -646,6 +694,18 @@ button.card {
   width: 100%;
   height: 300px;
   object-fit: cover;
+}
+
+.brand-strip {
+  padding-top: 0;
+}
+
+.brand-strip img {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  background: var(--surface);
 }
 
 .footer {

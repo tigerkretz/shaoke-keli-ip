@@ -11,7 +11,7 @@ export function Relationship() {
           <p className="en-label">Relationship</p>
           <h2>关系设定</h2>
         </div>
-        <p className="lede">悬停或点按卡片，看傲娇与黏人怎样互相成为挡风的人。</p>
+        <p className="lede">四张官方关系卡：黏贴、挡风、同眠、同一扇窗。点开读完。</p>
       </div>
       <div className="rel-grid">
         {relationships.map((card) => (

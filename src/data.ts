@@ -88,28 +88,36 @@ export const navItems = [
 
 export const relationships = [
   {
-    id: 'tsundere',
-    kicker: '傲娇 vs 黏人',
-    title: '一个不说，一个不走',
-    preview: '少爷把温柔藏在尾巴后面。可丽把勇气挂在少爷身上。',
-    body: '少爷看起来很高冷，可丽一靠近又舍不得推开。可丽看起来很胆小，可只要贴着少爷，全世界都变小了。',
-    image: '/assets/crops/story-aloof.jpg',
+    id: 'cuddle',
+    kicker: 'Better together',
+    title: '和你在一起，就是最舒服的事',
+    preview: '少爷负责当枕头。可丽负责把脸埋进去。',
+    body: '不需要说话。贴着，世界就会变小、变暖、变刚刚好。',
+    image: '/assets/crops/rel-cuddle.jpg',
   },
   {
-    id: 'windbreaker',
-    kicker: '保护者 / 挡风的人',
-    title: '他站在风前面',
-    preview: '少爷负责装作没事。可丽负责把真心说出来。',
-    body: '陌生声音、突然的脚步、太大的世界——少爷会先竖起耳朵。可丽躲在他身后，再慢慢把爪子伸出来。',
-    image: '/assets/crops/story-hide.jpg',
+    id: 'protect',
+    kicker: "You're safe with me",
+    title: '别怕，我在你身后',
+    preview: '少爷站在风前面。可丽把爪子搭在他身上。',
+    body: '陌生声音先传到少爷耳朵里。可丽躲一会儿，再慢慢把鼻子伸出来。',
+    image: '/assets/crops/rel-protect.jpg',
   },
   {
-    id: 'together',
-    kicker: 'Always together',
-    title: '有你在，就是家',
-    preview: '不是谁更勇敢，是两个人刚好拼成一件完整的外套。',
-    body: '他们性格完全不同，却走成同一条路。少了谁，日常都会少一块温度。',
-    image: '/assets/crops/story-loaf.jpg',
+    id: 'sleep',
+    kicker: 'Same dream',
+    title: '一起做更温暖的梦吧',
+    preview: '靠近一点，噩梦就会比较短。',
+    body: '同一条毯子，两种睡相。少爷装睡，可丽真的睡着。',
+    image: '/assets/crops/rel-sleep.jpg',
+  },
+  {
+    id: 'sunset',
+    kicker: 'Good view',
+    title: '看着同一片天空，就觉得一切都很好',
+    preview: '不必肩并肩说话。一起看，就已经是陪伴。',
+    body: '一天结束的时候，他们选同一扇窗。少了谁，晚霞都会少一块温度。',
+    image: '/assets/crops/rel-sunset.jpg',
   },
 ] as const
 
@@ -177,38 +185,58 @@ export const stories = [
   },
 ] as const
 
+export const merchBoard = {
+  src: '/assets/merch-board.png',
+  name: '周边一览',
+  en: 'Merch board',
+  note: '抱枕、立牌、马克杯、帆布袋与小物。',
+} as const
+
 export const merch = [
   {
-    src: '/assets/crops/shaoye-portrait.jpg',
-    name: '少爷主视觉',
-    en: 'Shào Yé key art',
-    note: '立牌／海报稿，来自角色设定表。',
+    src: '/assets/crops/merch-pillow.jpg',
+    name: '抱枕',
+    en: 'Pillow',
+    note: '贴在一起的夏天和冬天。',
   },
   {
-    src: '/assets/crops/keli-portrait.jpg',
-    name: '可丽主视觉',
-    en: 'Kě Lì key art',
-    note: '立牌／海报稿，来自角色设定表。',
+    src: '/assets/crops/merch-standee.jpg',
+    name: '亚克力立牌',
+    en: 'Acrylic stand',
+    note: '一对才算完整。',
   },
   {
-    src: '/assets/crops/duo-pair.jpg',
-    name: '双人海报',
-    en: 'Duo poster',
-    note: '有你在，就是家。',
+    src: '/assets/crops/merch-pins.jpg',
+    name: '贴纸与徽章',
+    en: 'Pins & stickers',
+    note: '小小的周边，装下大大的喜欢。',
   },
   {
-    src: '/assets/crops/story-loaf.jpg',
-    name: '日常周边稿',
-    en: 'Daily still',
-    note: '一起发呆，也能做成杯子。',
+    src: '/assets/crops/merch-mug.jpg',
+    name: '马克杯',
+    en: 'Mug',
+    note: '一杯温暖，装下和你在一起的每一天。',
   },
   {
-    src: '/assets/crops/story-sleep.jpg',
-    name: '晚安周边稿',
-    en: 'Night still',
-    note: '一对才能带回家。',
+    src: '/assets/crops/merch-tote.jpg',
+    name: '帆布袋',
+    en: 'Tote bag',
+    note: '一起看世界。',
+  },
+  {
+    src: '/assets/crops/merch-goods.jpg',
+    name: '钥匙扣与胶带',
+    en: 'Keychain & washi',
+    note: '把喜欢带进生活的每个角落。',
   },
 ] as const
+
+/** Drop-in slots the user will supply next. Do not invent replacements. */
+export const pendingAssets = {
+  logo: '/assets/logo.png',
+  favicon192: '/assets/favicon-192.png',
+  appleTouch: '/assets/apple-touch-icon.png',
+} as const
 
 export const officialSheets = [
   { src: '/assets/duo-hero.png', name: '双人主视觉', en: 'Duo poster' },

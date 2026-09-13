@@ -2,7 +2,23 @@
 
 以两只猫为原型的 IP 微站点：傲娇黏人的长毛少爷，和胆小却超黏人的金色英短可丽。
 
-视觉只用官方三张成稿：`duo-hero.png`、`shaoye-sheet.png`、`keli-sheet.png`。表情、姿态、日常格子全部从这三张裁切，不含生活照片。
+## 官方成稿（只用这些猫脸）
+
+- `public/assets/duo-hero.png` — 首页主视觉
+- `public/assets/shaoye-sheet.png` / `keli-sheet.png` — 角色切换、表情、姿态裁切
+- `public/assets/relationship-cards.png` — 关系四格
+- `public/assets/merch-board.png` — 周边板
+- `public/assets/og-banner.png` — 社交预览 / 页尾品牌横幅
+
+`public/assets/crops/` 全部从以上成稿裁切。不含生活照片，不另造脸。
+
+## 待投放槽位
+
+用户会继续给这些文件，到了直接替换即可：
+
+- `public/assets/logo.png` — 导航 / 页脚品牌标
+- `public/assets/favicon-192.png` — 浏览器图标（也可从 logo 居中方裁）
+- `public/assets/apple-touch-icon.png` — 主屏图标
 
 ## 本地演示
 
@@ -19,7 +35,9 @@ npm run preview
 ## 内容
 
 - 首页：双人主视觉海报
-- 角色切换：同一套奶油／暖棕／软金令牌，不含额外强调色
-- 表情、日常、周边稿：设定表与海报底部图库裁切
+- 角色切换：奶油底 + 少爷软金 / 可丽软玫瑰描边
+- 关系：官方四格卡，点开读文案
+- 表情、日常：设定表与海报图库裁切
+- 周边：官方周边板 + 六件单品裁切
 - 完整设定表：三张原图
 - 小彩蛋：分别和两只猫打个招呼
