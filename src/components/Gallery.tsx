@@ -1,19 +1,31 @@
-export function Gallery() {
+import { officialSheets } from '../data'
+import type { LightboxItem } from './Lightbox'
+
+export function Gallery({ onOpen }: { onOpen: (item: LightboxItem) => void }) {
   return (
-    <section className="section" id="coming">
+    <section className="section" id="sheets">
       <div className="section-head">
         <div>
-          <p className="en-label">Coming soon</p>
-          <h2>待替换素材</h2>
+          <p className="en-label">Official sheets</p>
+          <h2>完整设定表</h2>
         </div>
-        <p className="lede">生活写真已从站点移除。这里留给之后的二次创作图。</p>
+        <p className="lede">站点只用这三张官方成稿。点开看原图。</p>
       </div>
-      <div className="coming-card" role="status">
-        <p className="en-label">Placeholder</p>
-        <p className="coming-title">待替换：用户生成的二次创作素材</p>
-        <p>
-          目前页面只使用设定表裁切的风格化插画。真实猫片不会出现在任何区块。等新的生成稿到位后，再填进表情、日常与周边。
-        </p>
+      <div className="sheet-grid">
+        {officialSheets.map((sheet) => (
+          <button
+            key={sheet.src}
+            type="button"
+            className="sheet-card"
+            onClick={() => onOpen({ src: sheet.src, alt: sheet.name, caption: `${sheet.name} / ${sheet.en}` })}
+          >
+            <img src={sheet.src} alt={sheet.name} />
+            <div>
+              <b>{sheet.name}</b>
+              <div>{sheet.en}</div>
+            </div>
+          </button>
+        ))}
       </div>
     </section>
   )

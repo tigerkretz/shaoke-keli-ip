@@ -50,7 +50,7 @@ export default function App() {
         <Expressions onOpen={open} />
         <Stories onOpen={open} />
         <Merch onOpen={open} />
-        <Gallery />
+        <Gallery onOpen={open} />
       </main>
       <Footer />
       {lightbox ? <Lightbox item={lightbox} onClose={() => setLightbox(null)} /> : null}

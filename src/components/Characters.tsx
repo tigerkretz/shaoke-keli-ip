@@ -18,7 +18,7 @@ export function Characters({ onOpen, onTouch }: Props) {
           <p className="en-label">Character</p>
           <h2>角色设定</h2>
         </div>
-        <p className="lede">点选少爷或可丽，切换外形、性格与口头禅。画像来自设定表与姿态表裁切。</p>
+        <p className="lede">点选少爷或可丽切换档案。画像全部裁自官方设定表，不另造脸。</p>
       </div>
 
       <div className="switcher" role="tablist" aria-label="角色切换">
@@ -29,6 +29,8 @@ export function Characters({ onOpen, onTouch }: Props) {
               key={key}
               type="button"
               role="tab"
+              data-cat={key}
+              className={`switch-${key}`}
               aria-selected={id === key}
               aria-pressed={id === key}
               onClick={() => {
@@ -47,7 +49,7 @@ export function Characters({ onOpen, onTouch }: Props) {
         })}
       </div>
 
-      <div className="profile">
+      <div className={`profile theme-${id}`}>
         <div className="portrait-card">
           <button
             type="button"
@@ -57,12 +59,15 @@ export function Characters({ onOpen, onTouch }: Props) {
               onOpen({ src: cat.portrait, alt: `${cat.name} 角色肖像`, caption: cat.tag })
             }}
           >
-            <img src={cat.portrait} alt={`${cat.name} 设定表裁切肖像`} />
+            <img src={cat.portrait} alt={`${cat.name} 设定表主视觉`} />
           </button>
-          <p className="note">
-            角色视觉来自设定表／姿态表裁切，待用户二次创作素材替换。外形锁定：
-            {cat.appearance.slice(0, 2).join('；')}。
-          </p>
+          <button
+            type="button"
+            className="sheet-link"
+            onClick={() => onOpen({ src: cat.sheet, alt: `${cat.name} 完整设定表`, caption: '官方角色设定表' })}
+          >
+            查看完整设定表
+          </button>
         </div>
 
         <div>

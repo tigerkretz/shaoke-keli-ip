@@ -13,6 +13,7 @@ export interface Character {
   likes: string[]
   dislikes: string[]
   portrait: string
+  sheet: string
   poses: { src: string; label: string }[]
 }
 
@@ -22,24 +23,27 @@ export const characters: Record<CatId, Character> = {
     name: '少爷',
     nameEn: 'Shào Yé',
     motif: '皇冠',
-    tag: '高冷但黏人',
+    tag: '高冷但是黏人',
     tagEn: 'Cool, secretly clingy',
-    quote: '嗯……算了，来吧。',
+    quote: '别靠太近……好吧，再靠近一点也可以。',
     appearance: [
-      '长毛白底，胸与脸雪白',
-      '头背棕灰虎斑',
+      '长毛，白底棕灰斑',
+      '胸与脸雪白，头背虎斑',
       '蓬松深色尾尖',
       '绿金色眼睛，粉鼻',
     ],
     personality: ['表面上高冷傲娇', '其实超级黏人', '不承认自己想被靠近', '可丽在身边才会安心'],
-    likes: ['高处与安静', '可丽靠过来（但不说）', '被轻轻摸摸头'],
-    dislikes: ['太吵的环境', '被冷落', '可丽受惊'],
-    portrait: '/assets/crops/hero-shaoye.jpg',
+    likes: ['可丽、晒太阳、窝在你身边'],
+    dislikes: ['太吵的环境、陌生的人'],
+    portrait: '/assets/crops/shaoye-portrait.jpg',
+    sheet: '/assets/shaoye-sheet.png',
     poses: [
-      { src: '/assets/crops/shaoye-sit.jpg', label: '坐姿' },
-      { src: '/assets/crops/shaoye-stand.jpg', label: '侧立' },
-      { src: '/assets/crops/shaoye-sit34.jpg', label: '回眸' },
-      { src: '/assets/crops/shaoye-walk.jpg', label: '行走' },
+      { src: '/assets/crops/pose-shaoye-stand.jpg', label: '优雅站立' },
+      { src: '/assets/crops/pose-shaoye-walk.jpg', label: '缓缓走来' },
+      { src: '/assets/crops/pose-shaoye-loaf.jpg', label: '趴下发呆' },
+      { src: '/assets/crops/pose-shaoye-sleep.jpg', label: '卷着尾巴睡觉' },
+      { src: '/assets/crops/shaoye-side.jpg', label: '侧面' },
+      { src: '/assets/crops/shaoye-back.jpg', label: '背面' },
     ],
   },
   keli: {
@@ -47,9 +51,9 @@ export const characters: Record<CatId, Character> = {
     name: '可丽',
     nameEn: 'Kě Lì',
     motif: '小花',
-    tag: '胆小但超黏少爷',
+    tag: '胆小但是非常黏少爷',
     tagEn: 'Timid, Super clingy',
-    quote: '有少爷在，我就不怕了。',
+    quote: '只要有少爷在，我就会很勇敢！',
     appearance: [
       '金渐层英短，体态圆润',
       '奶油胸口与口鼻',
@@ -57,14 +61,17 @@ export const characters: Record<CatId, Character> = {
       '大绿眼，粉鼻，尾尖深色',
     ],
     personality: ['软萌胆小', '离开少爷就害怕', '黏人程度满分', '把少爷当成全世界的挡风处'],
-    likes: ['黏着少爷', '安静角落', '被护在身后'],
-    dislikes: ['大声与陌生环境', '少爷不在', '突然的靠近'],
-    portrait: '/assets/crops/hero-keli.jpg',
+    likes: ['少爷、黏贴、温暖的角落'],
+    dislikes: ['突然的声响、陌生环境'],
+    portrait: '/assets/crops/keli-portrait.jpg',
+    sheet: '/assets/keli-sheet.png',
     poses: [
-      { src: '/assets/crops/keli-sit.jpg', label: '坐姿' },
-      { src: '/assets/crops/keli-stand.jpg', label: '侧立' },
-      { src: '/assets/crops/keli-sit34.jpg', label: '回眸' },
-      { src: '/assets/crops/keli-walk.jpg', label: '行走' },
+      { src: '/assets/crops/pose-keli-loaf.jpg', label: '跟着少爷' },
+      { src: '/assets/crops/pose-keli-belly.jpg', label: '躲在少爷身后' },
+      { src: '/assets/crops/pose-keli-sit.jpg', label: '求黏贴' },
+      { src: '/assets/crops/pose-keli-play.jpg', label: '抱着玩偶' },
+      { src: '/assets/crops/pose-keli-sleep.jpg', label: '和少爷一起睡' },
+      { src: '/assets/crops/keli-side.jpg', label: '侧面' },
     ],
   },
 }
@@ -76,7 +83,7 @@ export const navItems = [
   { href: '#expressions', label: '表情', en: 'Faces' },
   { href: '#stories', label: '日常', en: 'Days' },
   { href: '#merch', label: '周边', en: 'Goods' },
-  { href: '#coming', label: '素材', en: 'Soon' },
+  { href: '#sheets', label: '设定表', en: 'Sheets' },
 ] as const
 
 export const relationships = [
@@ -86,7 +93,7 @@ export const relationships = [
     title: '一个不说，一个不走',
     preview: '少爷把温柔藏在尾巴后面。可丽把勇气挂在少爷身上。',
     body: '少爷看起来很高冷，可丽一靠近又舍不得推开。可丽看起来很胆小，可只要贴着少爷，全世界都变小了。',
-    image: '/assets/crops/hero-duo.jpg',
+    image: '/assets/crops/story-aloof.jpg',
   },
   {
     id: 'windbreaker',
@@ -94,113 +101,117 @@ export const relationships = [
     title: '他站在风前面',
     preview: '少爷负责装作没事。可丽负责把真心说出来。',
     body: '陌生声音、突然的脚步、太大的世界——少爷会先竖起耳朵。可丽躲在他身后，再慢慢把爪子伸出来。',
-    image: '/assets/crops/story-work.jpg',
+    image: '/assets/crops/story-hide.jpg',
   },
   {
     id: 'together',
     kicker: 'Always together',
-    title: '有你在，世界没那么可怕',
+    title: '有你在，就是家',
     preview: '不是谁更勇敢，是两个人刚好拼成一件完整的外套。',
     body: '他们性格完全不同，却走成同一条路。少了谁，日常都会少一块温度。',
-    image: '/assets/crops/story-sleep.jpg',
+    image: '/assets/crops/story-loaf.jpg',
   },
 ] as const
 
 export const expressions = [
-  {
-    src: '/assets/crops/expr-shaoye-aloof.jpg',
-    who: '少爷',
-    name: '高冷？（无语）',
-    en: 'Aloof',
-  },
-  {
-    src: '/assets/crops/expr-shaoye-tsundere.jpg',
-    who: '少爷',
-    name: '傲娇',
-    en: 'Tsundere',
-  },
-  {
-    src: '/assets/crops/expr-shaoye-happy.jpg',
-    who: '少爷',
-    name: '其实很开心',
-    en: 'Secretly glad',
-  },
-  {
-    src: '/assets/crops/expr-keli-together.jpg',
-    who: '可丽',
-    name: '有少爷在',
-    en: 'Safe now',
-  },
-  {
-    src: '/assets/crops/expr-keli-joy.jpg',
-    who: '可丽',
-    name: '开心！黏紧紧',
-    en: 'Clingy joy',
-  },
-  {
-    src: '/assets/crops/expr-keli-shy.jpg',
-    who: '可丽',
-    name: '害怕 / 委屈',
-    en: 'Timid',
-  },
+  { src: '/assets/crops/expr-shaoye-aloof.jpg', who: '少爷', name: '高冷脸', en: 'Aloof' },
+  { src: '/assets/crops/expr-shaoye-wonder.jpg', who: '少爷', name: '疑惑', en: 'Wonder' },
+  { src: '/assets/crops/expr-shaoye-blank.jpg', who: '少爷', name: '无奈', en: 'Blank' },
+  { src: '/assets/crops/expr-shaoye-happy.jpg', who: '少爷', name: '其实很开心', en: 'Secretly glad' },
+  { src: '/assets/crops/expr-shaoye-glance.jpg', who: '少爷', name: '看着你', en: 'Glance' },
+  { src: '/assets/crops/expr-keli-curious.jpg', who: '可丽', name: '好奇', en: 'Curious' },
+  { src: '/assets/crops/expr-keli-shy.jpg', who: '可丽', name: '有点害怕', en: 'Shy' },
+  { src: '/assets/crops/expr-keli-joy.jpg', who: '可丽', name: '开心', en: 'Joy' },
+  { src: '/assets/crops/expr-keli-wink.jpg', who: '可丽', name: '撒娇', en: 'Wink' },
+  { src: '/assets/crops/expr-keli-soft.jpg', who: '可丽', name: '舒服', en: 'Soft' },
 ] as const
 
 export const stories = [
   {
-    src: '/assets/crops/story-work.jpg',
-    title: '工作也要一起？',
-    en: 'Work, but together',
-    line: '少爷在认真装忙。可丽在认真装成抱枕。',
+    src: '/assets/crops/story-aloof.jpg',
+    title: '少爷：高冷脸',
+    en: 'Cool face',
+    line: '先装作不在意。尾巴已经出卖了。',
+  },
+  {
+    src: '/assets/crops/story-shy.jpg',
+    title: '可丽：有点害怕',
+    en: 'A little scared',
+    line: '世界很大。少爷在的时候，就刚好。',
+  },
+  {
+    src: '/assets/crops/story-loaf.jpg',
+    title: '一起发呆',
+    en: 'Loaf together',
+    line: '什么也不做，也要并排。',
   },
   {
     src: '/assets/crops/story-glance.jpg',
-    title: '有点想你，但不会说',
-    en: 'I missed you. Not saying it.',
+    title: '少爷：偷偷宠着你',
+    en: 'Secretly watching',
     line: '回一下头就好。被抓到的话，就说是风。',
   },
   {
-    src: '/assets/crops/story-sleep.jpg',
-    title: '一起才安心',
-    en: 'Sleep, then the world is quiet',
-    line: '同一块石头、同一团阳光。靠近一点，噩梦就会比较短。',
+    src: '/assets/crops/story-happy.jpg',
+    title: '可丽：超满足',
+    en: 'Full heart',
+    line: '贴在一起的时候，胆子会变大。',
   },
   {
-    src: '/assets/crops/story-home.jpg',
-    title: '来家吧，一起好了',
-    en: 'Come home',
-    line: '门一开，可丽先跑。少爷走在后面，假装不是在跟着。',
+    src: '/assets/crops/story-sleep.jpg',
+    title: '一起睡觉',
+    en: 'Sleep together',
+    line: '靠近一点，噩梦就会比较短。',
+  },
+  {
+    src: '/assets/crops/story-hide.jpg',
+    title: '躲在少爷身后',
+    en: 'Behind him',
+    line: '纸箱只是借口。真正的避风港是旁边那团毛。',
+  },
+  {
+    src: '/assets/crops/story-bed.jpg',
+    title: '一起晒太阳',
+    en: 'Sunbed',
+    line: '同一只窝，两种睡相。',
   },
 ] as const
 
 export const merch = [
   {
-    src: '/assets/crops/merch-plush.jpg',
-    name: '绒毛玩偶',
-    en: 'Plush pair',
+    src: '/assets/crops/shaoye-portrait.jpg',
+    name: '少爷主视觉',
+    en: 'Shào Yé key art',
+    note: '立牌／海报稿，来自角色设定表。',
+  },
+  {
+    src: '/assets/crops/keli-portrait.jpg',
+    name: '可丽主视觉',
+    en: 'Kě Lì key art',
+    note: '立牌／海报稿，来自角色设定表。',
+  },
+  {
+    src: '/assets/crops/duo-pair.jpg',
+    name: '双人海报',
+    en: 'Duo poster',
+    note: '有你在，就是家。',
+  },
+  {
+    src: '/assets/crops/story-loaf.jpg',
+    name: '日常周边稿',
+    en: 'Daily still',
+    note: '一起发呆，也能做成杯子。',
+  },
+  {
+    src: '/assets/crops/story-sleep.jpg',
+    name: '晚安周边稿',
+    en: 'Night still',
     note: '一对才能带回家。',
   },
-  {
-    src: '/assets/crops/merch-stand.jpg',
-    name: '压克力立牌',
-    en: 'Acrylic stand',
-    note: '桌上的小小挡风处。',
-  },
-  {
-    src: '/assets/crops/merch-mug.jpg',
-    name: '马克杯',
-    en: 'Mugs',
-    note: '一杯少爷，一杯可丽。',
-  },
-  {
-    src: '/assets/crops/merch-tote.jpg',
-    name: '帆布袋',
-    en: 'Tote',
-    note: '装得下零食，装不下分离。',
-  },
-  {
-    src: '/assets/crops/merch-phone.jpg',
-    name: '手机壳',
-    en: 'Phone case',
-    note: '亮屏也是他们。',
-  },
+] as const
+
+export const officialSheets = [
+  { src: '/assets/duo-hero.png', name: '双人主视觉', en: 'Duo poster' },
+  { src: '/assets/shaoye-sheet.png', name: '少爷设定表', en: 'Shào Yé sheet' },
+  { src: '/assets/keli-sheet.png', name: '可丽设定表', en: 'Kě Lì sheet' },
 ] as const
