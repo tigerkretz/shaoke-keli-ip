@@ -1,3 +1,5 @@
+import { images } from '../asset'
+
 type Props = {
   onTouch: (who: 'shaoye' | 'keli') => void
   touched: { shaoye: boolean; keli: boolean }
@@ -9,7 +11,7 @@ export function Hero({ onTouch, touched }: Props) {
       <div className="hero-stage">
         <img
           className="hero-duo"
-          src="/assets/duo-hero.png"
+          src={images.hero}
           alt="少爷与可丽双人主视觉：长毛白棕少爷与金色英短可丽坐在一起"
         />
         <div className="hero-greet">

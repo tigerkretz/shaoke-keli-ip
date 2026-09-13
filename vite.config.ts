@@ -1,8 +1,34 @@
 import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vite'
+import { defineConfig, type Plugin } from 'vite'
 
-// https://vite.dev/config/
+function assertPrefixedAssetPaths(): Plugin {
+  return {
+    name: 'assert-prefixed-asset-paths',
+    generateBundle(_options, bundle) {
+      const required = '/shaoke-keli-ip/assets/duo-hero.png'
+      let foundRequired = false
+      for (const [fileName, chunk] of Object.entries(bundle)) {
+        if (chunk.type !== 'chunk' || !fileName.endsWith('.js')) continue
+        if (chunk.code.includes(required)) foundRequired = true
+        if (
+          chunk.code.includes('"/assets/duo-hero.png"') ||
+          chunk.code.includes("'/assets/duo-hero.png'")
+        ) {
+          throw new Error(`${fileName} still contains a bare /assets/duo-hero.png string`)
+        }
+        const bare = chunk.code.match(/["']\/assets\//g) ?? []
+        if (bare.length) {
+          throw new Error(`${fileName} still contains ${bare.length} bare "/assets/..." string(s)`)
+        }
+      }
+      if (!foundRequired) {
+        throw new Error(`Built JS is missing ${required}`)
+      }
+    },
+  }
+}
+
 export default defineConfig({
-  base: './',
-  plugins: [react()],
+  base: '/shaoke-keli-ip/',
+  plugins: [react(), assertPrefixedAssetPaths()],
 })

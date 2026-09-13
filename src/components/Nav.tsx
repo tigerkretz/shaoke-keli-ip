@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { images } from '../asset'
 import { navItems } from '../data'
 
 export function Nav() {
@@ -27,7 +28,7 @@ export function Nav() {
   return (
     <header className="nav">
       <a className="brand" href="#top">
-        <img className="brand-logo" src="/assets/logo.png" alt="" />
+        <img className="brand-logo" src={images.logo} alt="" />
         <span className="brand-zh">少爷 × 可丽</span>
         <span className="brand-en">Always together</span>
       </a>
