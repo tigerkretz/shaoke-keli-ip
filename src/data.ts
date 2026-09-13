@@ -35,7 +35,7 @@ export const characters: Record<CatId, Character> = {
     personality: ['表面上高冷傲娇', '其实超级黏人', '不承认自己想被靠近', '可丽在身边才会安心'],
     likes: ['可丽、晒太阳、窝在你身边'],
     dislikes: ['太吵的环境、陌生的人'],
-    portrait: '/shaoke-keli-ip/assets/crops/shaoye-portrait.jpg',
+    portrait: '/shaoke-keli-ip/assets/crops/shaoye-portrait.png',
     sheet: '/shaoke-keli-ip/assets/shaoye-sheet.png',
     poses: [
       { src: '/shaoke-keli-ip/assets/crops/pose-shaoye-stand.jpg', label: '优雅站立' },
@@ -60,7 +60,7 @@ export const characters: Record<CatId, Character> = {
     personality: ['软萌胆小', '离开少爷就害怕', '黏人程度满分', '把少爷当成全世界的挡风处'],
     likes: ['少爷、黏贴、温暖的角落'],
     dislikes: ['突然的声响、陌生环境'],
-    portrait: '/shaoke-keli-ip/assets/crops/keli-portrait.jpg',
+    portrait: '/shaoke-keli-ip/assets/crops/keli-portrait.png',
     sheet: '/shaoke-keli-ip/assets/keli-sheet.png',
     poses: [
       { src: '/shaoke-keli-ip/assets/crops/pose-keli-loaf.jpg', label: '跟着少爷' },
@@ -227,19 +227,19 @@ export const merch = [
 export const officialSheets = [
   {
     src: '/shaoke-keli-ip/assets/duo-hero.png',
-    thumb: '/shaoke-keli-ip/assets/crops/duo-pair.jpg',
+    thumb: '/shaoke-keli-ip/assets/crops/duo-pair.png',
     name: '双人主视觉',
     en: 'Duo poster',
   },
   {
     src: '/shaoke-keli-ip/assets/shaoye-sheet.png',
-    thumb: '/shaoke-keli-ip/assets/crops/shaoye-portrait.jpg',
+    thumb: '/shaoke-keli-ip/assets/crops/shaoye-portrait.png',
     name: '少爷设定表',
     en: 'Shào Yé sheet',
   },
   {
     src: '/shaoke-keli-ip/assets/keli-sheet.png',
-    thumb: '/shaoke-keli-ip/assets/crops/keli-portrait.jpg',
+    thumb: '/shaoke-keli-ip/assets/crops/keli-portrait.png',
     name: '可丽设定表',
     en: 'Kě Lì sheet',
   },

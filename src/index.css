@@ -265,18 +265,15 @@ button {
 .hero-frame {
   overflow: hidden;
   border-radius: 36px;
-  aspect-ratio: 5 / 4;
-  box-shadow: var(--shadow);
   background: var(--cream-deep);
+  box-shadow: var(--shadow);
 }
 
 .hero-duo {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 18% 42%;
-  transform: scale(1.08);
-  animation: drift 14s ease-in-out infinite;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
 }
 
 .hero-greet {
@@ -384,9 +381,9 @@ button {
 
 .cast-tab img {
   width: 84px;
-  height: 84px;
+  height: 112px;
   object-fit: cover;
-  object-position: 50% 18%;
+  object-position: center 20%;
   border-radius: 16px;
 }
 
@@ -443,11 +440,12 @@ button {
   background: var(--surface);
 }
 
+.portrait-card img,
 .portrait-btn img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
-  object-position: 50% 12%;
+  object-position: center 20%;
   transition: transform 700ms ease;
 }
 
@@ -500,7 +498,7 @@ button {
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
-  object-position: 50% 30%;
+  object-position: center top;
   transition: transform 500ms ease;
 }
 
@@ -612,7 +610,7 @@ button {
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
-  object-position: 50% 20%;
+  object-position: center top;
   transition: transform 500ms ease;
 }
 
@@ -674,7 +672,7 @@ button {
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
-  object-position: 50% 28%;
+  object-position: center top;
   transition: transform 600ms ease;
 }
 
@@ -780,7 +778,7 @@ button {
   width: 44px;
   height: 44px;
   object-fit: cover;
-  object-position: 50% 18%;
+  object-position: center 20%;
   border-radius: 50%;
 }
 
@@ -817,7 +815,7 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 22% 38%;
+  object-position: center 20%;
 }
 
 .closer-line {
@@ -901,9 +899,9 @@ button {
 
 .egg img {
   width: min(620px, 88vw);
-  aspect-ratio: 5 / 4;
-  object-fit: cover;
-  object-position: 20% 40%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   margin: 0 auto 18px;
@@ -927,16 +925,6 @@ button {
   to {
     opacity: 1;
     transform: none;
-  }
-}
-
-@keyframes drift {
-  0%,
-  100% {
-    transform: scale(1.08) translate3d(0, 0, 0);
-  }
-  50% {
-    transform: scale(1.14) translate3d(-1.4%, 1.2%, 0);
   }
 }
 

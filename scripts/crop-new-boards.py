@@ -15,7 +15,7 @@ def save(im: Image.Image, name: str) -> None:
     dest = OUT / name
     dest.parent.mkdir(parents=True, exist_ok=True)
     rgb = im.convert("RGB")
-    rgb.save(dest, "JPEG", quality=92, optimize=True)
+    rgb.save(dest, "JPEG", quality=95, subsampling=0, optimize=True)
     print(f"  {name:32} {rgb.size[0]}x{rgb.size[1]}")
 
 
