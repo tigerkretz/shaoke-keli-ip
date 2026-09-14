@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tigerkretz.github.io/shaoke-keli-ip/sitemap.xml
