@@ -1,14 +1,19 @@
+import { useState } from 'react'
 import { images } from '../asset'
+import { DouyinCard } from './DouyinCard'
 
 const socials = [
-  { href: 'https://tigerkretz.github.io/shaoke-keli-ip/', label: '官网' },
+  { key: 'douyin', label: '抖音' },
 ] as const
 
 /**
- * 占位：账号矩阵定稿后把真实链接填进 socials。
+ * 账号矩阵：目前只有抖音（号 90890301968）。
+ * 小红书/B站开号后在 socials 加条目 + 复用 DouyinCard 的弹卡模式即可。
  * 商务合作走 mailto，避免暴露个人微信。
  */
 export function Footer() {
+  const [qrOpen, setQrOpen] = useState(false)
+
   return (
     <footer className="footer">
       <img className="footer-logo" src={images.logo} alt="少爷 × 可丽" />
@@ -18,12 +23,13 @@ export function Footer() {
       <p className="footer-note">有你在，世界没那么可怕。</p>
       <nav className="footer-social" aria-label="社交媒体">
         {socials.map((s) => (
-          <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer">
+          <button key={s.key} type="button" className="footer-link-btn" onClick={() => setQrOpen(true)}>
             {s.label}
-          </a>
+          </button>
         ))}
         <a href="mailto:tigerkretz@example.com?subject=少爷×可丽 商务合作">商务合作</a>
       </nav>
+      {qrOpen ? <DouyinCard onClose={() => setQrOpen(false)} /> : null}
     </footer>
   )
 }

@@ -15,4 +15,6 @@ export const images = {
   duoPair: '/shaoke-keli-ip/assets/crops/duo-pair.webp',
   cutoutShaoye: '/shaoke-keli-ip/assets/social/cutout-shaoye-3x4.webp',
   cutoutKeli: '/shaoke-keli-ip/assets/social/cutout-keli-3x4.webp',
+  douyinQr: '/shaoke-keli-ip/assets/qr/douyin-qr.png',
+  douyinCard: '/shaoke-keli-ip/assets/qr/douyin-card.png',
 } as const
