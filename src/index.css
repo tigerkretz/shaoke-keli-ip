@@ -65,6 +65,7 @@ body {
 
 img {
   max-width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -549,9 +550,10 @@ button {
 
 .rel-media img {
   width: 100%;
+  height: auto;
   aspect-ratio: 5 / 4;
   object-fit: cover;
-  object-position: 50% 62%;
+  object-position: center;
   transition: transform 700ms ease;
 }
 

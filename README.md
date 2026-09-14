@@ -14,10 +14,12 @@
 
 社交导出（同样只裁官方成稿，`python3 scripts/make-social.py`）：
 
-- `public/assets/social/cutout-shaoye-3x4.png` / `cutout-keli-3x4.png` — 网站角色肖像
+- `public/assets/social/cutout-shaoye-3x4.png` / `cutout-keli-3x4.png` — 1080×1440 网站肖像
 - `public/assets/social/ig-portrait-shaoye.png` / `ig-portrait-keli.png` — 1080×1350
 - `public/assets/social/ig-square-duo.png` — 1080×1080
 - `public/assets/social/ig-story-duo.png` — 1080×1920
+
+站点裁切统一尺寸（`python3 scripts/export-all.py`）：肖像 1080×1440，方图 1200×1200，关系卡 1200×960，周边 800×1000，双人主图长边 1600。
 
 ## 品牌标
 

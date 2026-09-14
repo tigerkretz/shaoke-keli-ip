@@ -1,3 +1,4 @@
+import { AssetImg } from '../AssetImg'
 import { stories } from '../data'
 import type { LightboxItem } from './Lightbox'
 
@@ -26,7 +27,7 @@ export function Stories({ onOpen }: { onOpen: (item: LightboxItem) => void }) {
             }
           >
             <span className="story-media">
-              <img src={story.src} alt={story.title} />
+              <AssetImg src={story.src} alt={story.title} w={1200} h={1200} sizes="(max-width: 640px) 92vw, 22vw" />
             </span>
             <span className="story-copy">
               <small>{story.en}</small>

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { AssetImg } from '../AssetImg'
 import { relationships } from '../data'
 
 export function Relationship() {
@@ -25,7 +26,7 @@ export function Relationship() {
               onClick={() => setOpen((cur) => (cur === card.id ? null : card.id))}
             >
               <span className="rel-media">
-                <img src={card.image} alt="" />
+                <AssetImg src={card.image} alt="" w={1200} h={960} sizes="(max-width: 640px) 92vw, 22vw" />
               </span>
               <span className="rel-copy">
                 <small>{card.kicker}</small>

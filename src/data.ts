@@ -187,37 +187,37 @@ export const merchBoard = {
 
 export const merch = [
   {
-    src: '/shaoke-keli-ip/assets/crops/merch-pillow.jpg',
+    src: '/shaoke-keli-ip/assets/crops/merch-pillow.png',
     name: '抱枕',
     en: 'Pillow',
     note: '贴在一起的夏天和冬天。',
   },
   {
-    src: '/shaoke-keli-ip/assets/crops/merch-standee.jpg',
+    src: '/shaoke-keli-ip/assets/crops/merch-standee.png',
     name: '亚克力立牌',
     en: 'Acrylic stand',
     note: '一对才算完整。',
   },
   {
-    src: '/shaoke-keli-ip/assets/crops/merch-pins.jpg',
+    src: '/shaoke-keli-ip/assets/crops/merch-pins.png',
     name: '贴纸与徽章',
     en: 'Pins & stickers',
     note: '小小的周边，装下大大的喜欢。',
   },
   {
-    src: '/shaoke-keli-ip/assets/crops/merch-mug.jpg',
+    src: '/shaoke-keli-ip/assets/crops/merch-mug.png',
     name: '马克杯',
     en: 'Mug',
     note: '一杯温暖，装下和你在一起的每一天。',
   },
   {
-    src: '/shaoke-keli-ip/assets/crops/merch-tote.jpg',
+    src: '/shaoke-keli-ip/assets/crops/merch-tote.png',
     name: '帆布袋',
     en: 'Tote bag',
     note: '一起看世界。',
   },
   {
-    src: '/shaoke-keli-ip/assets/crops/merch-goods.jpg',
+    src: '/shaoke-keli-ip/assets/crops/merch-goods.png',
     name: '钥匙扣与胶带',
     en: 'Keychain & washi',
     note: '把喜欢带进生活的每个角落。',

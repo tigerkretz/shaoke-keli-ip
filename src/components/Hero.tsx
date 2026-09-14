@@ -1,3 +1,4 @@
+import { AssetImg } from '../AssetImg'
 import { images } from '../asset'
 
 type Props = {
@@ -24,10 +25,13 @@ export function Hero({ onTouch, touched }: Props) {
       </div>
       <div className="hero-stage">
         <div className="hero-frame">
-          <img
+          <AssetImg
             className="hero-duo"
             src={images.duoPair}
             alt="少爷与可丽挨在一起：长毛白棕少爷，金色英短可丽"
+            w={1600}
+            h={1389}
+            sizes="(max-width: 980px) 92vw, 52vw"
           />
         </div>
         <div className="hero-greet">

@@ -1,3 +1,4 @@
+import { AssetImg } from '../AssetImg'
 import { merch, merchBoard } from '../data'
 import type { LightboxItem } from './Lightbox'
 
@@ -22,7 +23,7 @@ export function Merch({ onOpen }: { onOpen: (item: LightboxItem) => void }) {
             }
           >
             <span className="merch-media">
-              <img src={item.src} alt={item.name} />
+              <AssetImg src={item.src} alt={item.name} w={800} h={1000} sizes="(max-width: 640px) 92vw, 28vw" />
             </span>
             <span className="merch-copy">
               <b>{item.name}</b>

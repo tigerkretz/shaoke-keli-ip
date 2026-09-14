@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { AssetImg } from '../AssetImg'
 import { characters, type CatId } from '../data'
 import type { LightboxItem } from './Lightbox'
 
@@ -38,7 +39,7 @@ export function Characters({ onOpen, onTouch }: Props) {
                 onTouch(key)
               }}
             >
-              <img src={item.portrait} alt="" />
+              <AssetImg src={item.portrait} alt="" w={1080} h={1440} sizes="112px" />
               <span>
                 <b>
                   {item.name} {key === 'shaoye' ? '♔' : '❀'}
@@ -59,7 +60,7 @@ export function Characters({ onOpen, onTouch }: Props) {
             onOpen({ src: cat.portrait, alt: `${cat.name} 角色肖像`, caption: cat.tag })
           }}
         >
-          <img src={cat.portrait} alt={`${cat.name} 肖像`} />
+          <AssetImg src={cat.portrait} alt={`${cat.name} 肖像`} w={1080} h={1440} sizes="(max-width: 640px) 92vw, 38vw" />
         </button>
 
         <div className="profile-copy">
@@ -80,7 +81,7 @@ export function Characters({ onOpen, onTouch }: Props) {
                   className="pose-btn"
                   onClick={() => onOpen({ src: pose.src, alt: `${cat.name} ${pose.label}`, caption: pose.label })}
                 >
-                  <img src={pose.src} alt={`${cat.name} ${pose.label}`} />
+                  <AssetImg src={pose.src} alt={`${cat.name} ${pose.label}`} w={1200} h={1200} sizes="18vw" />
                 </button>
                 <figcaption>{pose.label}</figcaption>
               </figure>

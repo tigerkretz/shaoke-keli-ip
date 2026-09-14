@@ -1,3 +1,4 @@
+import { AssetImg } from '../AssetImg'
 import { expressions } from '../data'
 import type { LightboxItem } from './Lightbox'
 
@@ -25,7 +26,7 @@ export function Expressions({ onOpen }: { onOpen: (item: LightboxItem) => void }
               })
             }
           >
-            <img src={item.src} alt={`${item.who} ${item.name}`} />
+            <AssetImg src={item.src} alt={`${item.who} ${item.name}`} w={1200} h={1200} sizes="(max-width: 640px) 46vw, 18vw" />
             <span className="cap">
               <b>{item.name}</b>
               {item.who}
