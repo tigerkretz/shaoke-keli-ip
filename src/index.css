@@ -851,6 +851,121 @@ button {
   letter-spacing: 0.14em;
 }
 
+.footer-social {
+  display: flex;
+  gap: 22px;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.footer-social a {
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  color: var(--ink);
+  opacity: 0.72;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.footer-social a:hover,
+.footer-social a:focus-visible {
+  opacity: 1;
+  border-bottom-color: var(--gold);
+}
+
+.footer-link-btn {
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  color: var(--ink);
+  opacity: 0.72;
+  background: none;
+  border: none;
+  border-bottom: 1px solid transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.footer-link-btn:hover,
+.footer-link-btn:focus-visible {
+  opacity: 1;
+  border-bottom-color: var(--gold);
+}
+
+.qr-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: color-mix(in srgb, var(--ink) 68%, transparent);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.qr-card {
+  position: relative;
+  background: var(--surface);
+  border-radius: 18px;
+  padding: 28px 28px 22px;
+  max-width: 340px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 24px 60px rgb(0 0 0 / 28%);
+}
+
+.qr-img {
+  width: min(240px, 62vw);
+  height: auto;
+  border-radius: 14px;
+  display: block;
+  margin: 0 auto 14px;
+}
+
+.qr-name {
+  font-family: var(--serif);
+  font-size: 1.06rem;
+  letter-spacing: 0.08em;
+  margin: 0 0 4px;
+}
+
+.qr-name em {
+  display: block;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 0.82rem;
+  opacity: 0.62;
+  margin-top: 3px;
+  letter-spacing: 0.04em;
+}
+
+.qr-hint {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  opacity: 0.66;
+  margin: 0 0 16px;
+}
+
+.qr-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.qr-actions .btn {
+  font-size: 0.9rem;
+  padding: 8px 16px;
+}
+
+.qr-card .lightbox-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+}
+
+
+
 .lightbox {
   position: fixed;
   inset: 0;
