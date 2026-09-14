@@ -4,15 +4,15 @@
  * `/shaoke-keli-ip/assets/...` — Vite will not fold BASE_URL + "/assets/...".
  */
 export const images = {
-  hero: '/shaoke-keli-ip/assets/duo-hero.png',
-  shaoyeSheet: '/shaoke-keli-ip/assets/shaoye-sheet.png',
-  keliSheet: '/shaoke-keli-ip/assets/keli-sheet.png',
-  relationship: '/shaoke-keli-ip/assets/relationship-cards.png',
-  merch: '/shaoke-keli-ip/assets/merch-board.png',
-  og: '/shaoke-keli-ip/assets/og-banner.png',
-  logo: '/shaoke-keli-ip/assets/logo.png',
-  logoRibbon: '/shaoke-keli-ip/assets/logo-ribbon.png',
-  duoPair: '/shaoke-keli-ip/assets/crops/duo-pair.png',
-  cutoutShaoye: '/shaoke-keli-ip/assets/social/cutout-shaoye-3x4.png',
-  cutoutKeli: '/shaoke-keli-ip/assets/social/cutout-keli-3x4.png',
+  hero: '/shaoke-keli-ip/assets/duo-hero.webp',
+  shaoyeSheet: '/shaoke-keli-ip/assets/shaoye-sheet.webp',
+  keliSheet: '/shaoke-keli-ip/assets/keli-sheet.webp',
+  relationship: '/shaoke-keli-ip/assets/relationship-cards.webp',
+  merch: '/shaoke-keli-ip/assets/merch-board.webp',
+  og: '/shaoke-keli-ip/assets/og-banner.webp',
+  logo: '/shaoke-keli-ip/assets/logo.webp',
+  logoRibbon: '/shaoke-keli-ip/assets/logo-ribbon.webp',
+  duoPair: '/shaoke-keli-ip/assets/crops/duo-pair.webp',
+  cutoutShaoye: '/shaoke-keli-ip/assets/social/cutout-shaoye-3x4.webp',
+  cutoutKeli: '/shaoke-keli-ip/assets/social/cutout-keli-3x4.webp',
 } as const

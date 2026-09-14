@@ -32,6 +32,7 @@ export function Hero({ onTouch, touched }: Props) {
             w={1600}
             h={1389}
             sizes="(max-width: 980px) 92vw, 52vw"
+            eager
           />
         </div>
         <div className="hero-greet">
