@@ -22,9 +22,9 @@
   --wrap: 1120px;
   --gutter: max(24px, calc((100vw - var(--wrap)) / 2));
   --nav-h: 76px;
-  --serif: 'Noto Serif SC', 'Cormorant Garamond', serif;
-  --en: 'Cormorant Garamond', 'Noto Serif SC', serif;
-  --sans: 'Noto Sans SC', system-ui, sans-serif;
+  --serif: 'Songti SC', 'STSong', 'Noto Serif CJK SC', 'SimSun', Georgia, serif;
+  --en: 'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, 'Songti SC', serif;
+  --sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC', system-ui, -apple-system, sans-serif;
   --focus: 2px solid var(--gold);
 }
 

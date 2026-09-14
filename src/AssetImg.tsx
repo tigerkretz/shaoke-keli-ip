@@ -5,19 +5,32 @@ type Props = {
   h: number
   sizes?: string
   className?: string
+  /** Only the hero image should eager+high; everything below the fold lazy-loads. */
+  eager?: boolean
 }
 
-/** High-res crop + srcset so the browser does not invent a tiny intrinsic size. */
-export function AssetImg({ src, alt, w, h, sizes = '(max-width: 640px) 92vw, 36vw', className }: Props) {
+/** High-res crop with explicit intrinsic size so the browser reserves layout space. */
+export function AssetImg({
+  src,
+  alt,
+  w,
+  h,
+  sizes = '(max-width: 640px) 92vw, 36vw',
+  className,
+  eager = false,
+}: Props) {
   return (
     <img
       className={className}
       src={src}
-      srcSet={`${src} ${w}w`}
       sizes={sizes}
       width={w}
       height={h}
       alt={alt}
+      loading={eager ? 'eager' : 'lazy'}
+      decoding={eager ? 'sync' : 'async'}
+      // @ts-expect-error -- fetchpriority is valid HTML but not yet in React's types
+      fetchpriority={eager ? 'high' : undefined}
     />
   )
 }

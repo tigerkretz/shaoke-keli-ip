@@ -5,16 +5,16 @@ function assertPrefixedAssetPaths(): Plugin {
   return {
     name: 'assert-prefixed-asset-paths',
     generateBundle(_options, bundle) {
-      const required = '/shaoke-keli-ip/assets/duo-hero.png'
+      const required = '/shaoke-keli-ip/assets/duo-hero.webp'
       let foundRequired = false
       for (const [fileName, chunk] of Object.entries(bundle)) {
         if (chunk.type !== 'chunk' || !fileName.endsWith('.js')) continue
         if (chunk.code.includes(required)) foundRequired = true
         if (
-          chunk.code.includes('"/assets/duo-hero.png"') ||
-          chunk.code.includes("'/assets/duo-hero.png'")
+          chunk.code.includes('"/assets/duo-hero.webp"') ||
+          chunk.code.includes("'/assets/duo-hero.webp'")
         ) {
-          throw new Error(`${fileName} still contains a bare /assets/duo-hero.png string`)
+          throw new Error(`${fileName} still contains a bare /assets/duo-hero.webp string`)
         }
         const bare = chunk.code.match(/["']\/assets\//g) ?? []
         if (bare.length) {
