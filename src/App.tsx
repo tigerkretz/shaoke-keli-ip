@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
+import { Intro } from './components/Intro'
+import { shouldPlayIntro } from './components/introGate'
 import { BrandStrip } from './components/BrandStrip'
 import { Characters } from './components/Characters'
 import { EasterEgg } from './components/EasterEgg'
@@ -16,6 +18,9 @@ export default function App() {
   const [lightbox, setLightbox] = useState<LightboxItem | null>(null)
   const [egg, setEgg] = useState(false)
   const [touched, setTouched] = useState({ shaoye: false, keli: false })
+  const [intro, setIntro] = useState(() => shouldPlayIntro())
+
+  const finishIntro = useCallback(() => setIntro(false), [])
 
   const open = useCallback((item: LightboxItem) => setLightbox(item), [])
 
@@ -37,6 +42,8 @@ export default function App() {
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [])
+
+  if (intro) return <Intro onDone={finishIntro} />
 
   return (
     <>
