@@ -26,6 +26,9 @@
   --en: 'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, 'Songti SC', serif;
   --sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC', system-ui, -apple-system, sans-serif;
   --focus: 2px solid var(--gold);
+  /* 猫爪光标：.cur 带 hotspot，PNG 兜底；系统设置 reduced-motion 不影响光标 */
+  cursor: url('/shaoke-keli-ip/assets/cursors/paw-default.cur') 15 20,
+          url('/shaoke-keli-ip/assets/cursors/paw-default.png') 15 20, auto;
 }
 
 *,
@@ -1290,4 +1293,12 @@ button {
     opacity: 1;
     transform: none;
   }
+}
+
+/* 可点击元素：带箭头提示的猫爪（保留 pointer 语义） */
+a, button, [role='button'],
+.cast-tab, .portrait-btn, .pose-btn, .tile, .merch-card,
+.archive-link, .text-link, .footer-link-btn, .nav-toggle {
+  cursor: url('/shaoke-keli-ip/assets/cursors/paw-pointer.cur') 2 1,
+          url('/shaoke-keli-ip/assets/cursors/paw-pointer.png') 2 1, pointer;
 }
