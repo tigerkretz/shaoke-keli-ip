@@ -13,6 +13,7 @@ export const images = {
   logo: '/shaoke-keli-ip/assets/logo.webp',
   logoRibbon: '/shaoke-keli-ip/assets/logo-ribbon.webp',
   duoPair: '/shaoke-keli-ip/assets/crops/duo-pair.webp',
+  duoPairSquare: '/shaoke-keli-ip/assets/crops/duo-pair-square.webp',
   cutoutShaoye: '/shaoke-keli-ip/assets/social/cutout-shaoye-3x4.webp',
   cutoutKeli: '/shaoke-keli-ip/assets/social/cutout-keli-3x4.webp',
   douyinQr: '/shaoke-keli-ip/assets/qr/douyin-qr.png',
