@@ -1148,6 +1148,19 @@ button {
   padding: 16px;
 }
 
+/* 9:20 手机壁纸这类竖长图：由高度驱动尺寸，让外框正好贴合图片，
+   避免固定宽度 + max-height 造成框内两侧留出奶油色空条。 */
+.lightbox figure.is-tall {
+  width: fit-content;
+  max-width: min(440px, 100%);
+}
+
+.lightbox figure.is-tall img {
+  height: 78vh;
+  width: auto;
+  max-width: 100%;
+}
+
 .lightbox img {
   width: 100%;
   max-height: 74vh;
@@ -1392,13 +1405,47 @@ a, button, [role='button'],
 }
 
 .dl-media {
+  position: relative;
   display: block;
+  width: 100%;
+  padding: 0;
   overflow: hidden;
   border-radius: 22px;
   background: var(--surface);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
-  transition: transform 220ms ease, box-shadow 220ms ease;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+/* 悬停时提示「这张是看大图，不是下载」 */
+.dl-zoom {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 30px 12px 12px;
+  background: linear-gradient(transparent, color-mix(in srgb, var(--ink) 58%, transparent));
+  color: var(--surface);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+
+.dl-card:hover .dl-zoom,
+.dl-media:focus-visible .dl-zoom {
+  opacity: 1;
+  transform: none;
+}
+
+@media (hover: none) {
+  .dl-zoom {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .dl-media img {
@@ -1478,7 +1525,7 @@ a, button, [role='button'],
   text-underline-offset: 3px;
 }
 
-/* 下载卡片也是可点击元素，统一用猫爪指针 */
+/* 下载卡片也是可点击元素，统一用猫爪指针（dl-media 现为 button，需显式声明） */
 .dl-media,
 .dl-btn {
   cursor: url('/shaoke-keli-ip/assets/cursors/paw-pointer.cur') 2 1,

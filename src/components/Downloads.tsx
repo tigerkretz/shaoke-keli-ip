@@ -1,18 +1,29 @@
 import { useState } from 'react'
 import { AssetImg } from '../AssetImg'
 import { downloads, downloadTabs, type DownloadItem } from '../data'
+import type { LightboxItem } from './Lightbox'
 
-function Card({ item }: { item: DownloadItem }) {
+function Card({ item, onOpen }: { item: DownloadItem; onOpen: (item: LightboxItem) => void }) {
   return (
     <figure className="dl-card">
-      <a
+      <button
+        type="button"
         className="dl-media"
-        href={item.href}
-        download={item.file}
-        aria-label={`下载 ${item.who} ${item.name}`}
+        aria-label={`预览 ${item.who} ${item.name}`}
+        onClick={() =>
+          onOpen({
+            src: item.href,
+            alt: `${item.who} ${item.name}`,
+            caption: `${item.name} · ${item.who} — ${item.spec}`,
+            tall: item.h >= item.w * 2,
+          })
+        }
       >
         <AssetImg src={item.src} alt={`${item.who} ${item.name}`} w={item.w} h={item.h} sizes="(max-width: 640px) 44vw, 20vw" />
-      </a>
+        <span className="dl-zoom" aria-hidden="true">
+          看大图
+        </span>
+      </button>
       <figcaption className="dl-copy">
         <b>{item.name}</b>
         <em>{item.who}</em>
@@ -25,7 +36,7 @@ function Card({ item }: { item: DownloadItem }) {
   )
 }
 
-export function Downloads() {
+export function Downloads({ onOpen }: { onOpen: (item: LightboxItem) => void }) {
   const [tab, setTab] = useState<(typeof downloadTabs)[number]['id']>('wallpaper')
   const active = downloadTabs.find((t) => t.id === tab) ?? downloadTabs[0]
 
@@ -62,7 +73,7 @@ export function Downloads() {
         <p className="dl-hint">{active.hint}</p>
         <div className={tab === 'wallpaper' ? 'dl-grid dl-grid-tall' : 'dl-grid'}>
           {downloads[tab].map((item) => (
-            <Card key={item.href} item={item} />
+            <Card key={item.href} item={item} onOpen={onOpen} />
           ))}
         </div>
       </div>

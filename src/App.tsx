@@ -44,6 +44,27 @@ export default function App() {
     return () => window.removeEventListener('keydown', onKey)
   }, [])
 
+  // 弹层打开时锁住背景滚动：否则预览一张壁纸的同时页面还在背后动。
+  // 注意标准模式下滚动容器是 <html>，只设 body 不生效。
+  useEffect(() => {
+    const locked = lightbox !== null || egg
+    if (!locked) return
+    const root = document.documentElement
+    const prevBody = document.body.style.overflow
+    const prevRoot = root.style.overflow
+    const prevPad = root.style.paddingRight
+    // 滚动条消失会带来横向跳动，用等宽 padding 补偿
+    const gap = window.innerWidth - root.clientWidth
+    document.body.style.overflow = 'hidden'
+    root.style.overflow = 'hidden'
+    if (gap > 0) root.style.paddingRight = `${gap}px`
+    return () => {
+      document.body.style.overflow = prevBody
+      root.style.overflow = prevRoot
+      root.style.paddingRight = prevPad
+    }
+  }, [lightbox, egg])
+
   if (intro) return <Intro onDone={finishIntro} />
 
   return (
@@ -58,7 +79,7 @@ export default function App() {
         <Relationship />
         <Expressions onOpen={open} />
         <Stories onOpen={open} />
-        <Downloads />
+        <Downloads onOpen={open} />
         <Merch onOpen={open} />
         <Gallery onOpen={open} />
         <BrandStrip />
