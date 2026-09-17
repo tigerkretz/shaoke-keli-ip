@@ -4,6 +4,7 @@ import { shouldPlayIntro } from './components/introGate'
 import { BrandStrip } from './components/BrandStrip'
 import { Characters } from './components/Characters'
 import { EasterEgg } from './components/EasterEgg'
+import { Downloads } from './components/Downloads'
 import { Expressions } from './components/Expressions'
 import { Footer } from './components/Footer'
 import { Gallery } from './components/Gallery'
@@ -57,6 +58,7 @@ export default function App() {
         <Relationship />
         <Expressions onOpen={open} />
         <Stories onOpen={open} />
+        <Downloads />
         <Merch onOpen={open} />
         <Gallery onOpen={open} />
         <BrandStrip />

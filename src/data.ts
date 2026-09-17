@@ -76,6 +76,7 @@ export const navItems = [
   { href: '#relationship', label: '关系', en: 'Bond' },
   { href: '#expressions', label: '表情', en: 'Faces' },
   { href: '#stories', label: '日常', en: 'Days' },
+  { href: '#downloads', label: '下载', en: 'Free' },
   { href: '#merch', label: '周边', en: 'Goods' },
 ] as const
 
@@ -244,3 +245,72 @@ export const officialSheets = [
     en: 'Kě Lì sheet',
   },
 ] as const
+
+
+/**
+ * 免费素材下载区。
+ * 预览走轻量 webp，下载走高清成品（表情包给 PNG，聊天软件兼容性最好）。
+ * 手机壁纸统一 20:9（1080×2400），原生即该比例，无需裁切。
+ */
+export type DownloadItem = {
+  src: string
+  href: string
+  file: string
+  name: string
+  who: string
+  spec: string
+  w: number
+  h: number
+}
+
+const WP = '/shaoke-keli-ip/assets/wallpapers'
+const STK = '/shaoke-keli-ip/assets/downloads/stickers'
+const AVA = '/shaoke-keli-ip/assets/downloads/avatars'
+const CUT = '/shaoke-keli-ip/assets/downloads/cutouts'
+
+export const downloadTabs = [
+  { id: 'wallpaper', label: '手机壁纸', en: 'Wallpapers', hint: '20:9 竖屏，1080 × 2400。锁屏、主屏都留了干净空白。' },
+  { id: 'sticker', label: '表情包', en: 'Stickers', hint: '1024 × 1024 透明 PNG，可直接加进微信/QQ 表情。' },
+  { id: 'avatar', label: '头像', en: 'Avatars', hint: '512 × 512 方图，社交账号直接用。' },
+  { id: 'cutout', label: '立绘', en: 'Cutouts', hint: '透明底 PNG，做海报、贴纸、二次创作都方便。' },
+] as const
+
+export const downloads: Record<(typeof downloadTabs)[number]['id'], DownloadItem[]> = {
+  wallpaper: [
+    { src: `${WP}/wp-duo-sit.webp`, href: `${WP}/wp-duo-sit.webp`, file: '少爷和可丽-壁纸-并排坐.webp', name: '并排坐', who: '少爷 × 可丽', spec: '1080 × 2400 · WebP', w: 1080, h: 2400 },
+    { src: `${WP}/wp-duo-sunset.webp`, href: `${WP}/wp-duo-sunset.webp`, file: '少爷和可丽-壁纸-看夕阳.webp', name: '看夕阳', who: '少爷 × 可丽', spec: '1080 × 2400 · WebP', w: 1080, h: 2400 },
+    { src: `${WP}/wp-duo-sleep.webp`, href: `${WP}/wp-duo-sleep.webp`, file: '少爷和可丽-壁纸-相拥而眠.webp', name: '相拥而眠', who: '少爷 × 可丽', spec: '1080 × 2400 · WebP', w: 1080, h: 2400 },
+    { src: `${WP}/wp-duo-cuddle.webp`, href: `${WP}/wp-duo-cuddle.webp`, file: '少爷和可丽-壁纸-贴贴.webp', name: '贴贴', who: '少爷 × 可丽', spec: '1080 × 2400 · WebP', w: 1080, h: 2400 },
+    { src: `${WP}/wp-shaoye-sit.webp`, href: `${WP}/wp-shaoye-sit.webp`, file: '少爷-壁纸-端坐.webp', name: '端坐', who: '少爷', spec: '1080 × 2400 · WebP', w: 1080, h: 2400 },
+    { src: `${WP}/wp-shaoye-aloof.webp`, href: `${WP}/wp-shaoye-aloof.webp`, file: '少爷-壁纸-高冷.webp', name: '高冷', who: '少爷', spec: '1080 × 2400 · WebP', w: 1080, h: 2400 },
+    { src: `${WP}/wp-keli-sit.webp`, href: `${WP}/wp-keli-sit.webp`, file: '可丽-壁纸-乖巧坐.webp', name: '乖巧坐', who: '可丽', spec: '1080 × 2400 · WebP', w: 1080, h: 2400 },
+    { src: `${WP}/wp-keli-curl.webp`, href: `${WP}/wp-keli-curl.webp`, file: '可丽-壁纸-蜷睡.webp', name: '蜷睡', who: '可丽', spec: '1080 × 2400 · WebP', w: 1080, h: 2400 },
+  ],
+  sticker: [
+    { src: '/shaoke-keli-ip/assets/crops/expr-shaoye-aloof.webp', href: `${STK}/expr-shaoye-aloof.png`, file: '少爷-高冷脸.png', name: '高冷脸', who: '少爷', spec: '1024 × 1024 · PNG', w: 1254, h: 1254 },
+    { src: '/shaoke-keli-ip/assets/crops/expr-shaoye-wonder.webp', href: `${STK}/expr-shaoye-wonder.png`, file: '少爷-疑惑.png', name: '疑惑', who: '少爷', spec: '1024 × 1024 · PNG', w: 1254, h: 1254 },
+    { src: '/shaoke-keli-ip/assets/crops/expr-shaoye-blank.webp', href: `${STK}/expr-shaoye-blank.png`, file: '少爷-无奈.png', name: '无奈', who: '少爷', spec: '1024 × 1024 · PNG', w: 1254, h: 1254 },
+    { src: '/shaoke-keli-ip/assets/crops/expr-shaoye-happy.webp', href: `${STK}/expr-shaoye-happy.png`, file: '少爷-其实很开心.png', name: '其实很开心', who: '少爷', spec: '1024 × 1024 · PNG', w: 1254, h: 1254 },
+    { src: '/shaoke-keli-ip/assets/crops/expr-shaoye-glance.webp', href: `${STK}/expr-shaoye-glance.png`, file: '少爷-看着你.png', name: '看着你', who: '少爷', spec: '1024 × 1024 · PNG', w: 1254, h: 1254 },
+    { src: '/shaoke-keli-ip/assets/crops/expr-keli-curious.webp', href: `${STK}/expr-keli-curious.png`, file: '可丽-好奇.png', name: '好奇', who: '可丽', spec: '1024 × 1024 · PNG', w: 1254, h: 1254 },
+    { src: '/shaoke-keli-ip/assets/crops/expr-keli-joy.webp', href: `${STK}/expr-keli-joy.png`, file: '可丽-开心.png', name: '开心', who: '可丽', spec: '1024 × 1024 · PNG', w: 1254, h: 1254 },
+    { src: '/shaoke-keli-ip/assets/crops/expr-keli-shy.webp', href: `${STK}/expr-keli-shy.png`, file: '可丽-害羞.png', name: '害羞', who: '可丽', spec: '1024 × 1024 · PNG', w: 1254, h: 1254 },
+    { src: '/shaoke-keli-ip/assets/crops/expr-keli-soft.webp', href: `${STK}/expr-keli-soft.png`, file: '可丽-舒服.png', name: '舒服', who: '可丽', spec: '1024 × 1024 · PNG', w: 1254, h: 1254 },
+    { src: '/shaoke-keli-ip/assets/crops/expr-keli-wink.webp', href: `${STK}/expr-keli-wink.png`, file: '可丽-眨眼.png', name: '眨眼', who: '可丽', spec: '1024 × 1024 · PNG', w: 1254, h: 1254 },
+  ],
+  avatar: [
+    { src: `${AVA}/avatar-shaoye.png`, href: `${AVA}/avatar-shaoye.png`, file: '头像-少爷.png', name: '少爷', who: '正面', spec: '512 × 512 · PNG', w: 512, h: 512 },
+    { src: `${AVA}/avatar-keli.png`, href: `${AVA}/avatar-keli.png`, file: '头像-可丽.png', name: '可丽', who: '正面', spec: '512 × 512 · PNG', w: 512, h: 512 },
+    { src: `${AVA}/avatar-duo.png`, href: `${AVA}/avatar-duo.png`, file: '头像-双猫合影.png', name: '双猫合影', who: '少爷 × 可丽', spec: '512 × 512 · PNG', w: 512, h: 512 },
+    { src: `${AVA}/avatar-shaoye-aloof.png`, href: `${AVA}/avatar-shaoye-aloof.png`, file: '头像-少爷高冷.png', name: '高冷脸', who: '少爷', spec: '512 × 512 · PNG', w: 512, h: 512 },
+    { src: `${AVA}/avatar-shaoye-happy.png`, href: `${AVA}/avatar-shaoye-happy.png`, file: '头像-少爷偷笑.png', name: '其实很开心', who: '少爷', spec: '512 × 512 · PNG', w: 512, h: 512 },
+    { src: `${AVA}/avatar-keli-joy.png`, href: `${AVA}/avatar-keli-joy.png`, file: '头像-可丽开心.png', name: '开心', who: '可丽', spec: '512 × 512 · PNG', w: 512, h: 512 },
+    { src: `${AVA}/avatar-keli-wink.png`, href: `${AVA}/avatar-keli-wink.png`, file: '头像-可丽眨眼.png', name: '眨眼', who: '可丽', spec: '512 × 512 · PNG', w: 512, h: 512 },
+  ],
+  cutout: [
+    { src: `${CUT}/cutout-shaoye-stand.png`, href: `${CUT}/cutout-shaoye-stand.png`, file: '立绘-少爷端坐.png', name: '少爷 · 端坐', who: '透明底 PNG', spec: '1000 × 1000 · PNG 透明底', w: 1200, h: 1200 },
+    { src: `${CUT}/cutout-keli-sit.png`, href: `${CUT}/cutout-keli-sit.png`, file: '立绘-可丽乖巧坐.png', name: '可丽 · 乖巧坐', who: '透明底 PNG', spec: '1000 × 1000 · PNG 透明底', w: 1200, h: 1200 },
+    { src: `${CUT}/cutout-shaoye-loaf.png`, href: `${CUT}/cutout-shaoye-loaf.png`, file: '立绘-少爷猫面包.png', name: '少爷 · 猫面包', who: '透明底 PNG', spec: '1000 × 1000 · PNG 透明底', w: 1200, h: 1200 },
+    { src: `${CUT}/cutout-keli-curl.png`, href: `${CUT}/cutout-keli-curl.png`, file: '立绘-可丽蜷睡.png', name: '可丽 · 蜷睡', who: '透明底 PNG', spec: '1000 × 1000 · PNG 透明底', w: 1200, h: 1200 },
+  ],
+}

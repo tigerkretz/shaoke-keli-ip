@@ -1302,3 +1302,203 @@ a, button, [role='button'],
   cursor: url('/shaoke-keli-ip/assets/cursors/paw-pointer.cur') 2 1,
           url('/shaoke-keli-ip/assets/cursors/paw-pointer.png') 2 1, pointer;
 }
+
+
+/* ===== 免费素材下载区 ===== */
+
+/* 通用 .lede 只有 18ch，而 1 个汉字≈2ch，中文长句必被挤出孤字；
+   这里改用 em（1 汉字≈1em）并按最长的分类提示行留足宽度。*/
+.lede-wide {
+  max-width: 22em;
+}
+
+.dl-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: var(--space-4);
+}
+
+.dl-tab {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+.dl-tab b {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.dl-tab em {
+  font-style: normal;
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.dl-tab span {
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+.dl-tab:hover {
+  border-color: var(--gold);
+}
+
+.dl-tab.is-active {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.dl-tab.is-active b,
+.dl-tab.is-active em,
+.dl-tab.is-active span {
+  color: var(--surface);
+}
+
+.dl-hint {
+  margin: 0 0 var(--space-3);
+  font-size: 0.95rem;
+  color: var(--brown);
+  max-width: 60ch;
+}
+
+.dl-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.dl-grid-tall {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.dl-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+}
+
+.dl-media {
+  display: block;
+  overflow: hidden;
+  border-radius: 22px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.dl-media img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 600ms ease;
+}
+
+.dl-grid-tall .dl-media img {
+  aspect-ratio: 9 / 20;
+}
+
+.dl-card:hover .dl-media {
+  transform: translateY(-4px);
+}
+
+.dl-card:hover .dl-media img {
+  transform: scale(1.03);
+}
+
+.dl-copy {
+  display: grid;
+  gap: 3px;
+  padding: 0 4px;
+}
+
+.dl-copy b {
+  font-family: var(--serif);
+  font-size: 1rem;
+}
+
+.dl-copy em {
+  font-style: normal;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  opacity: 0.72;
+}
+
+.dl-copy span {
+  font-size: 0.78rem;
+  color: var(--brown);
+}
+
+.dl-btn {
+  margin-top: 10px;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 11px 24px;
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  color: var(--surface);
+  font-size: 0.78rem;
+  text-decoration: none;
+  transition: background-color 180ms ease;
+}
+
+.dl-btn:hover {
+  background: var(--brown);
+}
+
+.dl-license {
+  margin-top: var(--space-4);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--ink) 84%, transparent);
+  max-width: 68ch;
+}
+
+.dl-license a {
+  color: var(--brown);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* 下载卡片也是可点击元素，统一用猫爪指针 */
+.dl-media,
+.dl-btn {
+  cursor: url('/shaoke-keli-ip/assets/cursors/paw-pointer.cur') 2 1,
+          url('/shaoke-keli-ip/assets/cursors/paw-pointer.png') 2 1, pointer;
+}
+
+@media (max-width: 980px) {
+  .dl-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .dl-grid-tall {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .dl-grid,
+  .dl-grid-tall {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
