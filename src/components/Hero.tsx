@@ -28,7 +28,7 @@ export function Hero({ onTouch, touched }: Props) {
           <AssetImg
             className="hero-duo"
             src={images.duoPair}
-            alt="少爷与可丽挨在一起：长毛白棕少爷，金色英短可丽"
+            alt="少爷与可丽挨在一起：长毛白棕少爷，金渐层短毛可丽"
             w={1600}
             h={1389}
             sizes="(max-width: 980px) 92vw, 52vw"

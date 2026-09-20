@@ -52,10 +52,10 @@ export const characters: Record<CatId, Character> = {
     tagEn: 'Timid, Super clingy',
     quote: '只要有少爷在，我就会很勇敢！',
     appearance: [
-      '金渐层英短，体态圆润',
+      '金渐层短毛，体型娇小',
       '奶油胸口与口鼻',
-      '橘色短毛虎斑',
-      '大绿眼，粉鼻，尾尖深色',
+      '暖金被毛，深色尾尖',
+      '大绿眼，粉鼻',
     ],
     personality: ['软萌胆小', '离开少爷就害怕', '黏人程度满分', '把少爷当成全世界的挡风处'],
     likes: ['少爷、黏贴、温暖的角落'],
