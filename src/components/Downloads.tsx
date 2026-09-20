@@ -81,7 +81,7 @@ export function Downloads({ onOpen }: { onOpen: (item: LightboxItem) => void }) 
       <p className="dl-license">
         个人使用、二创、署名转载都免费，改了再发也欢迎 —— 标一下「少爷 × 可丽」就好。
         <br />
-        商用（联名、印制、广告投放）请先<a href="mailto:tigerkretz@example.com?subject=少爷×可丽 素材商用授权">来信</a>。
+        商用（联名、印制、广告投放）请先<a href="mailto:shaoye_keli@vip.qq.com?subject=少爷×可丽 素材商用授权">来信</a>。
       </p>
     </section>
   )

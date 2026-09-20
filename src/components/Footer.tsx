@@ -27,7 +27,7 @@ export function Footer() {
             {s.label}
           </button>
         ))}
-        <a href="mailto:tigerkretz@example.com?subject=少爷×可丽 商务合作">商务合作</a>
+        <a href="mailto:shaoye_keli@vip.qq.com?subject=少爷×可丽 商务合作">商务合作</a>
       </nav>
       {qrOpen ? <DouyinCard onClose={() => setQrOpen(false)} /> : null}
     </footer>
