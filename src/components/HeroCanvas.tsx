@@ -72,36 +72,9 @@ export function HeroCanvas({ host, pointer, active }: Props) {
     const frame = host.current
     if (!canvas || !frame) return
 
-    const gl = canvas.getContext('webgl2', { alpha: false, antialias: false, powerPreference: 'low-power' })
-    if (!gl) return
-
-    const vs = compile(gl, gl.VERTEX_SHADER, VS)
-    const fs = compile(gl, gl.FRAGMENT_SHADER, FS)
-    if (!vs || !fs) return
-    const program = gl.createProgram()
-    if (!program) return
-    gl.attachShader(program, vs)
-    gl.attachShader(program, fs)
-    gl.linkProgram(program)
-    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return
-    gl.useProgram(program)
-
-    const buf = gl.createBuffer()
-    gl.bindBuffer(gl.ARRAY_BUFFER, buf)
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW)
-    const loc = gl.getAttribLocation(program, 'aPos')
-    gl.enableVertexAttribArray(loc)
-    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0)
-
-    const uRes = gl.getUniformLocation(program, 'uRes')
-    const uPtr = gl.getUniformLocation(program, 'uPtr')
-    const uTime = gl.getUniformLocation(program, 'uTime')
-    const uDark = gl.getUniformLocation(program, 'uDark')
-
     let raf = 0
     let visible = true
     const start = performance.now()
-
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2)
       const w = Math.max(1, Math.floor(frame.clientWidth * dpr))
@@ -112,38 +85,89 @@ export function HeroCanvas({ host, pointer, active }: Props) {
       }
     }
 
-    const draw = (now: number) => {
-      if (!visible) return
-      resize()
-      gl.viewport(0, 0, canvas.width, canvas.height)
-      const nx = pointer.current.x * 0.5 + 0.5
-      const ny = pointer.current.y * 0.5 + 0.5
-      gl.uniform2f(uRes, canvas.width, canvas.height)
-      gl.uniform2f(uPtr, nx, 1 - ny)
-      gl.uniform1f(uTime, (now - start) / 1000)
-      gl.uniform1f(uDark, document.documentElement.dataset.theme === 'dark' ? 1 : 0)
-      gl.drawArrays(gl.TRIANGLES, 0, 3)
-      raf = requestAnimationFrame(draw)
-    }
-
     const io = new IntersectionObserver(
       ([entry]) => {
         visible = entry.isIntersecting
-        if (visible) raf = requestAnimationFrame(draw)
-        else cancelAnimationFrame(raf)
+        if (visible && !raf) raf = requestAnimationFrame(draw)
+        if (!visible) {
+          cancelAnimationFrame(raf)
+          raf = 0
+        }
       },
       { threshold: 0.05 },
     )
+
+    const gl = canvas.getContext('webgl2', { alpha: false, antialias: false, powerPreference: 'low-power' })
+    const vs = gl ? compile(gl, gl.VERTEX_SHADER, VS) : null
+    const fs = gl ? compile(gl, gl.FRAGMENT_SHADER, FS) : null
+    const program = gl && vs && fs ? gl.createProgram() : null
+    if (gl && vs && fs && program) {
+      gl.attachShader(program, vs)
+      gl.attachShader(program, fs)
+      gl.linkProgram(program)
+    }
+    const linked = Boolean(gl && program && gl.getProgramParameter(program, gl.LINK_STATUS))
+
+    let buf: WebGLBuffer | null = null
+    let uRes: WebGLUniformLocation | null = null
+    let uPtr: WebGLUniformLocation | null = null
+    let uTime: WebGLUniformLocation | null = null
+    let uDark: WebGLUniformLocation | null = null
+    const ctx2d = !linked ? canvas.getContext('2d') : null
+
+    if (linked && gl && program) {
+      gl.useProgram(program)
+      buf = gl.createBuffer()
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf)
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW)
+      const loc = gl.getAttribLocation(program, 'aPos')
+      gl.enableVertexAttribArray(loc)
+      gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0)
+      uRes = gl.getUniformLocation(program, 'uRes')
+      uPtr = gl.getUniformLocation(program, 'uPtr')
+      uTime = gl.getUniformLocation(program, 'uTime')
+      uDark = gl.getUniformLocation(program, 'uDark')
+    }
+
+    const draw = (now: number) => {
+      if (!visible) return
+      resize()
+      const nx = pointer.current.x * 0.5 + 0.5
+      const ny = pointer.current.y * 0.5 + 0.5
+      if (linked && gl) {
+        gl.viewport(0, 0, canvas.width, canvas.height)
+        gl.uniform2f(uRes, canvas.width, canvas.height)
+        gl.uniform2f(uPtr, nx, 1 - ny)
+        gl.uniform1f(uTime, (now - start) / 1000)
+        gl.uniform1f(uDark, document.documentElement.dataset.theme === 'dark' ? 1 : 0)
+        gl.drawArrays(gl.TRIANGLES, 0, 3)
+      } else if (ctx2d) {
+        const dark = document.documentElement.dataset.theme === 'dark'
+        ctx2d.fillStyle = dark ? '#251d18' : '#f4ebe2'
+        ctx2d.fillRect(0, 0, canvas.width, canvas.height)
+        const gx = nx * canvas.width
+        const gy = ny * canvas.height
+        const glow = ctx2d.createRadialGradient(gx, gy, 0, gx, gy, canvas.width * 0.55)
+        glow.addColorStop(0, dark ? 'rgba(212,176,140,0.42)' : 'rgba(195,160,135,0.38)')
+        glow.addColorStop(1, 'rgba(0,0,0,0)')
+        ctx2d.fillStyle = glow
+        ctx2d.fillRect(0, 0, canvas.width, canvas.height)
+      }
+      raf = requestAnimationFrame(draw)
+    }
+
     io.observe(frame)
     raf = requestAnimationFrame(draw)
 
     return () => {
       cancelAnimationFrame(raf)
       io.disconnect()
-      gl.deleteBuffer(buf)
-      gl.deleteProgram(program)
-      gl.deleteShader(vs)
-      gl.deleteShader(fs)
+      if (gl && program && vs && fs) {
+        if (buf) gl.deleteBuffer(buf)
+        gl.deleteProgram(program)
+        gl.deleteShader(vs)
+        gl.deleteShader(fs)
+      }
     }
   }, [active, host, pointer, resolved])
 

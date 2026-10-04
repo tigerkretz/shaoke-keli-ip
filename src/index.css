@@ -242,6 +242,8 @@ button {
   background: var(--surface);
   border-radius: var(--radius-pill);
   padding: 8px 14px;
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 .hero {
@@ -259,10 +261,12 @@ button {
 .hero-copy h1 {
   font-family: var(--serif);
   font-weight: 600;
-  font-size: clamp(3rem, 7vw, 5.6rem);
-  line-height: 1.02;
+  font-size: clamp(2.5rem, 4.8vw, 4.2rem);
+  line-height: 1.12;
   margin: 0 0 18px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 .kicker,
@@ -1525,6 +1529,22 @@ button {
 
   .nav {
     position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    row-gap: 8px;
+  }
+
+  .nav #site-nav {
+    grid-column: 1 / -1;
+    flex: none;
+    width: auto;
+    height: 0;
+    justify-content: flex-end;
+  }
+
+  .nav-tools {
+    justify-self: end;
   }
 
   .expr-grid {
