@@ -27,3 +27,10 @@ export function useMobileHero() {
   const narrow = useMatch('(max-width: 720px)')
   return coarse || narrow
 }
+
+/** Fine pointer on a desktop-width viewport — custom paw cursor may follow. */
+export function useFineDesktop() {
+  const fine = useMatch('(pointer: fine)')
+  const wide = useMatch('(min-width: 721px)')
+  return fine && wide
+}
