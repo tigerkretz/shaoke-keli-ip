@@ -34,7 +34,7 @@ export function pawInlineSvg(kind: PawKind, stroke: string) {
 }
 
 export const CLICKABLE =
-  'a,button,[role="button"],[role="tab"],summary,label,.seg-btn,.tile,.merch-card,.archive-link,.text-link,.dl-media,.dl-btn,.dl-tab,.portrait-btn,.pose-btn,.panel-btn,.lightbox-close,.lightbox-nav,.lightbox,.chip,.nav-toggle,.footer-link-btn,.rel-card,.btn'
+  'a,button,[role="button"],[role="tab"],summary,label,.seg-btn,.tile,.merch-card,.archive-link,.text-link,.dl-media,.dl-btn,.dl-tab,.portrait-btn,.pose-btn,.panel-btn,.lightbox-close,.lightbox-nav,.lightbox,.chip,.nav-toggle,.footer-link-btn,.rel-card,.btn,.hero-frame'
 
 export const TEXT_FIELDS =
   'input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]),textarea,select,[contenteditable="true"]'
@@ -89,13 +89,13 @@ export function applyCssCursorFallback(theme: 'light' | 'dark') {
   html.paw-css ${TEXT_FIELDS} {
     cursor: text !important;
   }
-  html.paw-dom,
-  html.paw-dom * {
-    cursor: none;
-  }
-  html.paw-dom ${TEXT_FIELDS} {
-    cursor: text !important;
-  }
+}
+html.paw-dom,
+html.paw-dom * {
+  cursor: none;
+}
+html.paw-dom ${TEXT_FIELDS} {
+  cursor: text !important;
 }
 `
 }
