@@ -1,42 +1,43 @@
 import { useState } from 'react'
 import { AssetImg } from '../AssetImg'
 import { relationships } from '../data'
+import { Segmented } from './Segmented'
+import { SectionFrame } from './SectionFrame'
 
 export function Relationship() {
-  const [open, setOpen] = useState<string | null>('cuddle')
+  const [id, setId] = useState<(typeof relationships)[number]['id']>('cuddle')
+  const card = relationships.find((item) => item.id === id) ?? relationships[0]
 
   return (
-    <section className="section section-soft" id="relationship">
-      <div className="section-head">
-        <div>
-          <p className="en-label">How they stay</p>
-          <h2>四件一起做的事</h2>
+    <SectionFrame
+      id="relationship"
+      index="03"
+      label="TOGETHER"
+      title="四件一起做的事"
+      lede="黏着、挡风、同眠、同一扇窗。一次只读一件。"
+    >
+      <Segmented
+        ariaLabel="关系"
+        value={id}
+        onChange={setId}
+        options={[
+          { id: 'cuddle', label: '黏着', en: 'Cuddle' },
+          { id: 'protect', label: '挡风', en: 'Guard' },
+          { id: 'sleep', label: '同眠', en: 'Sleep' },
+          { id: 'sunset', label: '同一扇窗', en: 'Sunset' },
+        ]}
+      />
+      <article key={card.id} className="panel fade-swap">
+        <div className="panel-media hover-zoom">
+          <AssetImg src={card.image} alt={card.title} w={1200} h={960} sizes="(max-width: 720px) 92vw, 52vw" />
         </div>
-        <p className="lede">黏着、挡风、同眠、同一扇窗。点开读一句就好。</p>
-      </div>
-      <div className="rel-grid">
-        {relationships.map((card) => {
-          const expanded = open === card.id
-          return (
-            <button
-              key={card.id}
-              type="button"
-              className={expanded ? 'rel-card is-open' : 'rel-card'}
-              aria-expanded={expanded}
-              onClick={() => setOpen((cur) => (cur === card.id ? null : card.id))}
-            >
-              <span className="rel-media">
-                <AssetImg src={card.image} alt="" w={1200} h={960} sizes="(max-width: 640px) 92vw, 22vw" />
-              </span>
-              <span className="rel-copy">
-                <small>{card.kicker}</small>
-                <h3>{card.title}</h3>
-                <p>{expanded ? card.body : card.preview}</p>
-              </span>
-            </button>
-          )
-        })}
-      </div>
-    </section>
+        <div className="panel-copy">
+          <small>{card.kicker}</small>
+          <h3>{card.title}</h3>
+          <p>{card.preview}</p>
+          <p className="panel-body">{card.body}</p>
+        </div>
+      </article>
+    </SectionFrame>
   )
 }

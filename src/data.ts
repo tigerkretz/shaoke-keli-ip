@@ -70,6 +70,15 @@ export const characters: Record<CatId, Character> = {
   },
 }
 
+export const together = {
+  name: '少爷 × 可丽',
+  nameEn: 'Always together',
+  tag: '总是靠在一起',
+  tagEn: 'Closer than they admit',
+  quote: '最好的陪伴，是和你在一起。',
+  personality: ['少了谁都不完整', '同一张毯子，两种睡相', '靠近一点就可以'],
+} as const
+
 export const navItems = [
   { href: '#top', label: '首页', en: 'Home' },
   { href: '#characters', label: '角色', en: 'Cast' },

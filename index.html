@@ -26,9 +26,19 @@
     <meta property="og:site_name" content="少爷 × 可丽" />
     <meta property="og:locale" content="zh_CN" />
     <meta name="twitter:description" content="有你在，世界没那么可怕。A duo-cat IP about companionship. Always together." />
-    <meta name="theme-color" content="#f5eee6" />
+    <meta name="theme-color" content="#f7eee4" />
     <title>少爷 × 可丽 · Always together</title>
-
+    <script>
+      (function () {
+        try {
+          var pref = localStorage.getItem('sk-theme') || 'system'
+          var dark = window.matchMedia('(prefers-color-scheme: dark)').matches
+          var theme = pref === 'dark' || (pref === 'system' && dark) ? 'dark' : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.dataset.themePref = pref
+        } catch (e) {}
+      })()
+    </script>
 </head>
   <body>
     <div id="root"></div>

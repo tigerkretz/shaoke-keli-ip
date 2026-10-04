@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { images } from '../asset'
 import { navItems } from '../data'
+import { ThemeToggle } from './ThemeToggle'
 
 export function Nav() {
   const [open, setOpen] = useState(false)
@@ -36,15 +37,6 @@ export function Nav() {
         <span className="brand-zh">少爷 × 可丽</span>
         <span className="brand-en">Always together</span>
       </a>
-      <button
-        className="nav-toggle"
-        type="button"
-        aria-expanded={open}
-        aria-controls="site-nav"
-        onClick={() => setOpen((v) => !v)}
-      >
-        菜单
-      </button>
       <nav id="site-nav" aria-label="页面导航">
         <ul className={open ? 'nav-links open' : 'nav-links'}>
           {navItems.map((item) => (
@@ -60,6 +52,18 @@ export function Nav() {
           ))}
         </ul>
       </nav>
+      <div className="nav-tools">
+        <ThemeToggle />
+        <button
+          className="nav-toggle"
+          type="button"
+          aria-expanded={open}
+          aria-controls="site-nav"
+          onClick={() => setOpen((v) => !v)}
+        >
+          菜单
+        </button>
+      </div>
     </header>
   )
 }

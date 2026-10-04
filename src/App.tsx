@@ -15,15 +15,20 @@ import { Nav } from './components/Nav'
 import { Relationship } from './components/Relationship'
 import { Stories } from './components/Stories'
 
+type LightboxState = { items: LightboxItem[]; index: number }
+
 export default function App() {
-  const [lightbox, setLightbox] = useState<LightboxItem | null>(null)
+  const [lightbox, setLightbox] = useState<LightboxState | null>(null)
   const [egg, setEgg] = useState(false)
   const [touched, setTouched] = useState({ shaoye: false, keli: false })
   const [intro, setIntro] = useState(() => shouldPlayIntro())
 
   const finishIntro = useCallback(() => setIntro(false), [])
 
-  const open = useCallback((item: LightboxItem) => setLightbox(item), [])
+  const open = useCallback((items: LightboxItem[], index = 0) => {
+    if (!items.length) return
+    setLightbox({ items, index: Math.min(Math.max(0, index), items.length - 1) })
+  }, [])
 
   const touch = useCallback((who: 'shaoye' | 'keli') => {
     setTouched((prev) => {
@@ -35,17 +40,12 @@ export default function App() {
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setLightbox(null)
-        setEgg(false)
-      }
+      if (event.key === 'Escape') setEgg(false)
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [])
 
-  // 弹层打开时锁住背景滚动：否则预览一张壁纸的同时页面还在背后动。
-  // 注意标准模式下滚动容器是 <html>，只设 body 不生效。
   useEffect(() => {
     const locked = lightbox !== null || egg
     if (!locked) return
@@ -53,7 +53,6 @@ export default function App() {
     const prevBody = document.body.style.overflow
     const prevRoot = root.style.overflow
     const prevPad = root.style.paddingRight
-    // 滚动条消失会带来横向跳动，用等宽 padding 补偿
     const gap = window.innerWidth - root.clientWidth
     document.body.style.overflow = 'hidden'
     root.style.overflow = 'hidden'
@@ -73,7 +72,7 @@ export default function App() {
         跳到内容
       </a>
       <Nav />
-      <main id="main">
+      <main id="main" className="site">
         <Hero onTouch={touch} touched={touched} />
         <Characters onOpen={open} onTouch={touch} />
         <Relationship />
@@ -85,7 +84,14 @@ export default function App() {
         <BrandStrip />
       </main>
       <Footer />
-      {lightbox ? <Lightbox item={lightbox} onClose={() => setLightbox(null)} /> : null}
+      {lightbox ? (
+        <Lightbox
+          items={lightbox.items}
+          index={lightbox.index}
+          onClose={() => setLightbox(null)}
+          onIndex={(index) => setLightbox((cur) => (cur ? { ...cur, index } : cur))}
+        />
+      ) : null}
       {egg ? <EasterEgg onClose={() => setEgg(false)} /> : null}
     </>
   )

@@ -2,7 +2,8 @@ import { images } from '../asset'
 
 export function BrandStrip() {
   return (
-    <section className="closer" aria-label="收束">
+    <section className="frame closer" aria-label="收束">
+      <p className="frame-label">09 / ALWAYS</p>
       <div className="closer-orb">
         <img src={images.duoPairSquare} alt="" />
       </div>

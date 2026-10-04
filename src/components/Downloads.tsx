@@ -1,23 +1,34 @@
 import { useState } from 'react'
 import { AssetImg } from '../AssetImg'
 import { downloads, downloadTabs, type DownloadItem } from '../data'
+import { Segmented } from './Segmented'
+import { SectionFrame } from './SectionFrame'
 import type { LightboxItem } from './Lightbox'
 
-function Card({ item, onOpen }: { item: DownloadItem; onOpen: (item: LightboxItem) => void }) {
+function Card({
+  item,
+  items,
+  onOpen,
+}: {
+  item: DownloadItem
+  items: DownloadItem[]
+  onOpen: (items: LightboxItem[], index?: number) => void
+}) {
+  const gallery: LightboxItem[] = items.map((entry) => ({
+    src: entry.href,
+    alt: `${entry.who} ${entry.name}`,
+    caption: `${entry.name} · ${entry.who} — ${entry.spec}`,
+    tall: entry.h >= entry.w * 2,
+  }))
+  const index = items.findIndex((entry) => entry.href === item.href)
+
   return (
     <figure className="dl-card">
       <button
         type="button"
-        className="dl-media"
+        className="dl-media hover-zoom"
         aria-label={`预览 ${item.who} ${item.name}`}
-        onClick={() =>
-          onOpen({
-            src: item.href,
-            alt: `${item.who} ${item.name}`,
-            caption: `${item.name} · ${item.who} — ${item.spec}`,
-            tall: item.h >= item.w * 2,
-          })
-        }
+        onClick={() => onOpen(gallery, Math.max(0, index))}
       >
         <AssetImg src={item.src} alt={`${item.who} ${item.name}`} w={item.w} h={item.h} sizes="(max-width: 640px) 44vw, 20vw" />
         <span className="dl-zoom" aria-hidden="true">
@@ -36,44 +47,32 @@ function Card({ item, onOpen }: { item: DownloadItem; onOpen: (item: LightboxIte
   )
 }
 
-export function Downloads({ onOpen }: { onOpen: (item: LightboxItem) => void }) {
+export function Downloads({ onOpen }: { onOpen: (items: LightboxItem[], index?: number) => void }) {
   const [tab, setTab] = useState<(typeof downloadTabs)[number]['id']>('wallpaper')
   const active = downloadTabs.find((t) => t.id === tab) ?? downloadTabs[0]
+  const items = downloads[tab]
 
   return (
-    <section className="section section-soft" id="downloads">
-      <div className="section-head">
-        <div>
-          <p className="en-label">Free to keep</p>
-          <h2>喜欢的，带走</h2>
-        </div>
-        <p className="lede lede-wide">壁纸、表情、头像、立绘，全部免费。</p>
-      </div>
-
-      <div className="dl-tabs" role="tablist" aria-label="素材分类">
-        {downloadTabs.map((t) => (
-          <button
-            key={t.id}
-            type="button"
-            role="tab"
-            id={`dl-tab-${t.id}`}
-            aria-selected={tab === t.id}
-            aria-controls="dl-panel"
-            className={tab === t.id ? 'dl-tab is-active' : 'dl-tab'}
-            onClick={() => setTab(t.id)}
-          >
-            <b>{t.label}</b>
-            <em>{t.en}</em>
-            <span>{downloads[t.id].length}</span>
-          </button>
-        ))}
-      </div>
+    <SectionFrame
+      id="downloads"
+      index="06"
+      label="KEEP"
+      title="喜欢的，带走"
+      lede="壁纸、表情、头像、立绘，全部免费。"
+      ledeWide
+    >
+      <Segmented
+        ariaLabel="素材分类"
+        value={tab}
+        onChange={setTab}
+        options={downloadTabs.map((t) => ({ id: t.id, label: t.label, en: t.en }))}
+      />
 
       <div id="dl-panel" role="tabpanel" aria-labelledby={`dl-tab-${tab}`} className="dl-panel">
         <p className="dl-hint">{active.hint}</p>
         <div className={tab === 'wallpaper' ? 'dl-grid dl-grid-tall' : 'dl-grid'}>
-          {downloads[tab].map((item) => (
-            <Card key={item.href} item={item} onOpen={onOpen} />
+          {items.map((item) => (
+            <Card key={item.href} item={item} items={items} onOpen={onOpen} />
           ))}
         </div>
       </div>
@@ -83,6 +82,6 @@ export function Downloads({ onOpen }: { onOpen: (item: LightboxItem) => void }) 
         <br />
         商用（联名、印制、广告投放）请先<a href="mailto:shaoye_keli@vip.qq.com?subject=少爷×可丽 素材商用授权">来信</a>。
       </p>
-    </section>
+    </SectionFrame>
   )
 }
